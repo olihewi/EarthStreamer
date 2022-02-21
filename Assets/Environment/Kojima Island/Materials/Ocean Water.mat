@@ -55,6 +55,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -67,7 +68,7 @@ Material:
     - _Glossiness: 0.731
     - _Glossy: 0.692
     - _GlossyReflections: 1
-    - _IntersectPower: 2.99
+    - _IntersectPower: 2
     - _IntersectThreshold: 10
     - _Metallic: 0
     - _Mode: 0
