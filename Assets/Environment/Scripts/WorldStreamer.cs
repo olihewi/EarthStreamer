@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,24 +9,59 @@ namespace Environment
   public class WorldStreamer : MonoBehaviour
   {
     [Header("Settings")]
-    [SerializeField] private float[] chunkLodRanges = new float[0];
+    public float[] chunkLodRanges = new float[0];
+    public bool ignoreY = true;
 
-    [SerializeField] private GameObject testChunkObject;
-    
-    private WorldChunk[] chunks;
+    [Header("Auto-Chunking")]
+    public WorldChunk chunkPrefab;
+    public float chunkSize;
+    public Vector3 chunkOffset;
+
+    private Dictionary<Vector3Int, WorldChunk> chunks = new Dictionary<Vector3Int, WorldChunk>();
     private Camera mainCamera;
+
+    public static WorldStreamer INSTANCE;
+
+    private void OnEnable()
+    {
+      if (INSTANCE != null)
+      {
+        Destroy(gameObject);
+        return;
+      }
+      INSTANCE = this;
+      chunks = new Dictionary<Vector3Int, WorldChunk>();
+      foreach (WorldChunk chunk in FindObjectsOfType<WorldChunk>())
+      {
+        Vector3 pos = chunk.transform.position/ chunkSize - chunkOffset;
+        Vector3Int key = Vector3Int.FloorToInt(pos);
+        if (chunks.ContainsKey(key))
+        {
+          Debug.Log("Duplicate Chunk? " + key);
+          continue;
+        }
+        chunks.Add(key,chunk);
+      }
+    }
 
     private void Start()
     {
-      chunks = FindObjectsOfType<WorldChunk>();
       mainCamera = Camera.main;
     }
     
     void Update()
     {
-      foreach (WorldChunk chunk in chunks)
+      foreach (KeyValuePair<Vector3Int,WorldChunk> chunkPair in chunks)
       {
-        float sqrDistance = Vector3.SqrMagnitude(mainCamera.transform.position - chunk.transform.position);
+        WorldChunk chunk = chunkPair.Value;
+        Vector3 camPos = mainCamera.transform.position;
+        Vector3 chunkPos = chunk.transform.position;
+        if (ignoreY)
+        {
+          camPos.y = 0;
+          chunkPos.y = 0;
+        }
+        float sqrDistance = Vector3.SqrMagnitude(camPos - chunkPos);
         int lod = -1;
         for (int i = 0; i < chunkLodRanges.Length; i++)
         {
@@ -34,18 +71,30 @@ namespace Environment
         }
         chunk.UpdateLOD(lod);
       }
+
+      if (Input.GetKeyDown(KeyCode.Space))
+        Resources.UnloadUnusedAssets();
     }
 
-    [ContextMenu("Generate Test Chunks")]
-    public void GenerateTestChunks()
+    [ContextMenu("Auto Chunk")]
+    public void AutoChunk()
     {
-      for (int x = -5; x <= 5; x++)
+      for (int i = 0; i < transform.childCount; i++)
       {
-        for (int y = -5; y <= 5; y++)
+        Transform child = transform.GetChild(i);
+        if (child.GetComponent<WorldChunk>() != null) continue;
+        Vector3 pos = child.position / chunkSize - chunkOffset;
+        Vector3Int key = Vector3Int.RoundToInt(pos);
+        if (!chunks.ContainsKey(key))
         {
-          GameObject go = Instantiate(testChunkObject, new Vector3(x * 100, 0, y * 100), Quaternion.identity, transform);
-          go.name = "Chunk " + x + ", " + y;
+          chunks.Add(key, Instantiate(chunkPrefab, (key + chunkOffset) * chunkSize, Quaternion.identity, transform));
+          chunks[key].name = "Chunk " + key.x + ", " + key.y + ", " + key.z;
         }
+        WorldChunk chunk = chunks[key];
+        chunk.OpenPrefab();
+        child.parent = ((GameObject) chunk.prefabObject).transform;
+        i--;
+        chunk.ClosePrefab();
       }
     }
   }

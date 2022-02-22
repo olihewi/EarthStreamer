@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEditor;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -21,46 +23,70 @@ namespace Environment
     
     private int currentLevelOfDetail = -1;
     private GameObject lodObject;
-    private KeyValuePair<AsyncOperationHandle<GameObject>, GameObject> tracker;
+    private Dictionary<AsyncOperationHandle<GameObject>, GameObject> trackers = new Dictionary<AsyncOperationHandle<GameObject>, GameObject>();
 
     public void UpdateLOD(int _newLevelOfDetail)
     {
       if (_newLevelOfDetail == currentLevelOfDetail) return;
-      currentLevelOfDetail = _newLevelOfDetail;
-      LoadLOD(currentLevelOfDetail);
+      LoadLOD(_newLevelOfDetail);
     }
 
     private async void LoadLOD(int _levelOfDetail)
     {
-      UnloadPreviousLOD();
       if (_levelOfDetail >= 0)
       {
         AssetReference newLOD = levelsOfDetail[Math.Min(_levelOfDetail, levelsOfDetail.Length - 1)].assetReference;
         AsyncOperationHandle<GameObject> handle = newLOD.InstantiateAsync(transform.position, transform.rotation, transform);
         await handle.Task;
+        UnloadPreviousLOD();
         lodObject = handle.Result;
-        tracker = new KeyValuePair<AsyncOperationHandle<GameObject>, GameObject>(handle, lodObject);
+        trackers.Add(handle, lodObject);
       }
+      else
+      {
+        UnloadPreviousLOD();
+      }
+      currentLevelOfDetail = _levelOfDetail;
     }
 
     private void UnloadPreviousLOD()
     {
-      if (tracker.Value == null) return;
-      Addressables.ReleaseInstance(tracker.Key);
-      Addressables.ReleaseInstance(tracker.Value);
+      foreach (KeyValuePair<AsyncOperationHandle<GameObject>, GameObject> tracker in trackers)
+      {
+        if (tracker.Value == null) continue;
+        Addressables.ReleaseInstance(tracker.Key);
+        Addressables.ReleaseInstance(tracker.Value);
+      }
+      trackers.Clear();
     }
 
     #if UNITY_EDITOR
-    private Object prefabObject;
-    public void OpenPrefab()
+    [HideInInspector] public Object prefabObject;
+    [ContextMenu("Open Prefab")]
+    public Object OpenPrefab()
     {
-      if (prefabObject != null) return;
+      if (prefabObject != null) return prefabObject;
+      if (!levelsOfDetail[0].assetReference.IsValid())
+      {
+        GameObject temp = new GameObject(gameObject.name);
+        GameObject newPrefab = PrefabUtility.SaveAsPrefabAsset(temp, "Assets/Environment/Chunks/" + gameObject.name + ".prefab");
+        DestroyImmediate(temp);
+        var settings = AddressableAssetSettingsDefaultObject.Settings;
+        var group = settings.DefaultGroup;
+        AddressableAssetEntry entry = settings.CreateOrMoveEntry(AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(newPrefab)), group, false, false);
+        entry.address = AssetDatabase.GetAssetPath(newPrefab);
+        AssetDatabase.Refresh();
+        levelsOfDetail[0].assetReference = new AssetReference(entry.guid);
+      }
       prefabObject = PrefabUtility.InstantiatePrefab(levelsOfDetail[0].assetReference.editorAsset, transform);
+      return prefabObject;
     }
     public bool ClosePrefab()
     {
       if (prefabObject == null) return false;
-      PrefabUtility.ApplyObjectOverride(prefabObject,AssetDatabase.GetAssetPath(levelsOfDetail[0].assetReference.editorAsset), InteractionMode.AutomatedAction);
+      GameObject go = (GameObject) prefabObject;
+      go.transform.parent = null;
+      PrefabUtility.ApplyPrefabInstance(go, InteractionMode.AutomatedAction);
       DestroyImmediate(prefabObject);
       return true;
     }
