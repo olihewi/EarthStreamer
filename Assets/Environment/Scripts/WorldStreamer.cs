@@ -1,9 +1,10 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 namespace Environment
 {
-  public class ChunkSystem : MonoBehaviour
+  public class WorldStreamer : MonoBehaviour
   {
     [Header("Settings")]
     [SerializeField] private float[] chunkLodRanges = new float[0];
@@ -18,7 +19,7 @@ namespace Environment
       chunks = FindObjectsOfType<WorldChunk>();
       mainCamera = Camera.main;
     }
-
+    
     void Update()
     {
       foreach (WorldChunk chunk in chunks)
