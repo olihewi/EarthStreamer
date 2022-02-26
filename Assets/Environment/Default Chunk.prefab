@@ -45,7 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsOfDetail:
   - assetReference:
-      m_AssetGUID: 23c831d867e39f249b769971702534bb
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - assetReference:
+      m_AssetGUID: 
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

@@ -19,7 +19,7 @@ namespace Environment
       public AssetReference assetReference;
     }
 
-    [SerializeField] private ChunkLOD[] levelsOfDetail = new ChunkLOD[0];
+    [SerializeField] private List<ChunkLOD> levelsOfDetail = new List<ChunkLOD>();
     
     private int currentLevelOfDetail = -1;
     private GameObject lodObject;
@@ -35,7 +35,7 @@ namespace Environment
     {
       if (_levelOfDetail >= 0)
       {
-        AssetReference newLOD = levelsOfDetail[Math.Min(_levelOfDetail, levelsOfDetail.Length - 1)].assetReference;
+        AssetReference newLOD = levelsOfDetail[Math.Min(_levelOfDetail, levelsOfDetail.Count - 1)].assetReference;
         AsyncOperationHandle<GameObject> handle = newLOD.InstantiateAsync(transform.position, transform.rotation, transform);
         await handle.Task;
         UnloadPreviousLOD();
@@ -62,23 +62,22 @@ namespace Environment
 
     #if UNITY_EDITOR
     [HideInInspector] public Object prefabObject;
-    [ContextMenu("Open Prefab")]
-    public Object OpenPrefab()
+    public Object OpenPrefab(int _lod)
     {
       if (prefabObject != null) return prefabObject;
-      if (!levelsOfDetail[0].assetReference.IsValid())
+      if (!levelsOfDetail[_lod].assetReference.IsValid())
       {
         GameObject temp = new GameObject(gameObject.name);
-        GameObject newPrefab = PrefabUtility.SaveAsPrefabAsset(temp, "Assets/Environment/Chunks/" + gameObject.name + ".prefab");
+        GameObject newPrefab = PrefabUtility.SaveAsPrefabAsset(temp, "Assets/Environment/Chunks/LOD" + _lod + "/" + gameObject.name + ".prefab");
         DestroyImmediate(temp);
         var settings = AddressableAssetSettingsDefaultObject.Settings;
         var group = settings.DefaultGroup;
         AddressableAssetEntry entry = settings.CreateOrMoveEntry(AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(newPrefab)), group, false, false);
         entry.address = AssetDatabase.GetAssetPath(newPrefab);
         AssetDatabase.Refresh();
-        levelsOfDetail[0].assetReference = new AssetReference(entry.guid);
+        levelsOfDetail[_lod].assetReference = new AssetReference(entry.guid);
       }
-      prefabObject = PrefabUtility.InstantiatePrefab(levelsOfDetail[0].assetReference.editorAsset, transform);
+      prefabObject = PrefabUtility.InstantiatePrefab(levelsOfDetail[_lod].assetReference.editorAsset, transform);
       return prefabObject;
     }
     public bool ClosePrefab()

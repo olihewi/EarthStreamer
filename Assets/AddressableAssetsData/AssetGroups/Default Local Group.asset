@@ -17,804 +17,804 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 8d652ca7fb5ff934fa8559bcc1565f21
   m_SerializeEntries:
-  - m_GUID: 0d6db901c41ae4a419cbd5490a75de9d
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_3-2.fbx
+  - m_GUID: 80695788c3a81884aaead9a5a6072503
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -4, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6730af0b853e0474c95de63d9cd5d09b
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_2-1.fbx
+  - m_GUID: 1e32d3702b5d0254196f32f4b17ab967
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 4, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d138b677437552746bed3ff38f107782
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_5-0.fbx
+  - m_GUID: b82a89b4425df1b48a25bbfd1f4b1dcb
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -2, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 93e6a5f9c8aecd54181b4828390d125a
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_3-3.fbx
+  - m_GUID: e019a118fe8cb9b4d825bc382debf131
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 4, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ae0e9840d78bf7d4eafcd9a9348b8be0
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_6-2.fbx
+  - m_GUID: b395d0b07e539f243b9fa39166c84cb4
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 1, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 090c45f96fd58b946a170f6d885326ad
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_8-7.fbx
+  - m_GUID: 8a46dbb83cb94014687001d7a70b3b60
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 2, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 43e83ae4d274fca46abb1f9e0ca0f35c
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_7-7.fbx
+  - m_GUID: 284e809278a964a4bbf214b5e1af4dae
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -4, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 015d5f53792691d44bf0b04bdb8e7afe
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_6-1.fbx
+  - m_GUID: d5e7e13dafde8ec45ae4edc3c3ec946c
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 2, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 679afcf1d4690d449b840509126a3f5b
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_3-9.fbx
+  - m_GUID: 43b16fe725e21004e9130d034a18734d
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -4, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 710eab4835a22a5468a92fe09141d3ae
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_0-3.fbx
+  - m_GUID: 4be1fcae2e51677499b1c74a6ffcd1df
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 0, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 0b5929a3613725e4c93bb09aaf6588f8
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_6-4.fbx
+  - m_GUID: f7e0ec8476acb1f429271b739b30937d
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 2, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c2d0ed1a37964254ea71b95a1b09d07a
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_5-7.fbx
+  - m_GUID: 3e5467dc5cb0d04439dd5c91b43396f6
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -1, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 2125b622bf565614ba1cf69dc45389c7
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_2-9.fbx
+  - m_GUID: 3cf011a185cfeb448bc3f2c625bd2c00
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 2, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 738d5e2158fdc1444a5eb798abf575fa
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_3-8.fbx
+  - m_GUID: 7d3d7c0afe7fcdf46bdf73d3d6291169
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 4, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9aa09d2ec9d218a4199867a2d183a085
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_6-9.fbx
+  - m_GUID: 89a2828d9a474df44b40a00b5c1295cf
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 4, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 379c7ce0cb8ead74fbfe89918a35a394
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_0-4.fbx
+  - m_GUID: 89ab066cb5f0b9e45b1cf0467033a34c
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -5, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6c2d02be31fd26641bb61a1b6c5522c5
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_9-0.fbx
+  - m_GUID: dbff097f19e6bfb4f902dbb18cd11849
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 3, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c3094609034834a40a20ff7342c1ec83
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_1-3.fbx
+  - m_GUID: 619c30a067320454c9fd2aabe876c273
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 1, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 401fe28fc4a1f8e4b911c9a1445bcde1
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_8-3.fbx
+  - m_GUID: 9f33b3643443e264e9d11a91317bffc0
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 2, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b71d710931f5bd542858aa2440e9334f
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_8-2.fbx
+  - m_GUID: dc921a7ff86b70145b4299b3842ea0ed
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -4, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: dc711e229aac5e34aa45cf270ed5052e
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_7-5.fbx
+  - m_GUID: f62ffa9cbf28ed94c83efe527a595a17
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 0, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d2703cf30022be54ea3fca8cc13b470b
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_1-5.fbx
+  - m_GUID: 45318a2891acff5498931276c4068056
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 0, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 22d3792fc42eead4bb09a9413228fffe
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_8-8.fbx
+  - m_GUID: 794024233ed5e584baa871e8eb1e9d7b
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 4, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c2f6f91b5a02c994aa05b278988b440f
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_3-0.fbx
+  - m_GUID: e54dc3c777642e74d9c33b99f4ec7a59
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 1, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 8d7d0fa3ea394724897f49cb3c502838
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_0-0.fbx
+  - m_GUID: cf91512d48606244e908f1ba6cede63d
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 0, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: bc45046d13c0974498fe4750aab5d824
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_4-1.fbx
+  - m_GUID: 08b72ee4efa74e441a00ac897b5e5c74
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 0, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 555a54fc23156684a9473ad642de86ff
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_4-8.fbx
+  - m_GUID: a3955bb8d4e4ecd43b72726cce515ece
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -3, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3418316ef626fae4683dcc8f1a9c0a2f
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_9-6.fbx
+  - m_GUID: 9fd44c3a56bcc084db7c1b6848f0f721
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -2, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 8f405462379fe1540a138ab5079213d5
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_7-4.fbx
+  - m_GUID: 9b1cf9f7122c055408eaae9449f46d56
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -3, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b7d107a1e07939b43a7cb27704e17361
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_9-9.fbx
+  - m_GUID: 51479116d16555946b6708a74585492d
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 1, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 91d54613530049241907fb4a1211e006
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_2-3.fbx
+  - m_GUID: 10a9c178bfce58a4e93e1d3b0406f336
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 0, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d39d8b671d58f7b4c966557291dc8304
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_4-0.fbx
+  - m_GUID: ca9e81a332322e340b92c9ae662b27cc
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 4, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9e79e9fa6e6bd5744abf6adbfeafdd05
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_0-9.fbx
+  - m_GUID: c74b0917039b8e34dbb68659f38c1886
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -3, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: f63c63abdb0135d44aa3eb8810c394a1
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_8-4.fbx
+  - m_GUID: a481d3490ab9568449b508e8a2249b9a
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -2, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c909430389dfab44293e4e8d5fd91036
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_9-1.fbx
+  - m_GUID: c49baeb58c1153040a4e1771f0e947a7
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -3, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 62b1aa69307008a4ba064171819fe058
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_0-1.fbx
+  - m_GUID: 50dd546bee671de468875ff026a31ba2
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -1, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4c0cffa768f0ed84b8e7342b774820d3
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_7-0.fbx
+  - m_GUID: 0e61d243b54a5744d81a827d31807d4d
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 1, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5590a60459df48344984d23ff719f266
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_2-5.fbx
+  - m_GUID: 377060b064da8e749a0e56eddfdc6f20
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -2, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 8562c42248cedec4ab01cb65e555c7e4
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_7-8.fbx
+  - m_GUID: a02b0b403aecad84ba7e6e8dd62e1908
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -5, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ebf4ccf435215404ca9b169dda6b6090
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_8-0.fbx
+  - m_GUID: 24243f301d9614a48b3d711fc878a503
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 0, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5e937e6f4096c364b82f3d3181e15b24
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_4-5.fbx
+  - m_GUID: 4b6430a320d53db428f6dfa891a55591
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -5, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9215431e691e92c4d92af0517a9dadcd
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_4-3.fbx
+  - m_GUID: 9c786b4796a7e304bbd128afb84ddca6
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 0, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 0c165522f4ac0cf4488d3f0374ee14dc
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_9-7.fbx
+  - m_GUID: 0cfa623fc77c98748b0036215f035d67
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 3, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 542eaa03f0afb5f4c8e6d24f88de6352
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_5-6.fbx
+  - m_GUID: 8c07bc3cc1738be429b1aac359bd67d9
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -5, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4e0697991bdb0a4459904e797706b53a
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_6-6.fbx
+  - m_GUID: f75f3aefa6a234f4aba6485210e0393a
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 3, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 57d4a11641cdf0a40841caaedacaeede
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_7-2.fbx
+  - m_GUID: c393fe56c1e6a1c48bd96720de9acda9
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 3, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 447665a940d022849858597c222496c3
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_7-1.fbx
+  - m_GUID: e2ea3dcb8c0c6a540865e016808c1619
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -3, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 09e34959cad65b24ea643c5ccd10e015
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_1-0.fbx
+  - m_GUID: c9e1d5ff638f2e24b9fa1e4fc1caa0d6
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 4, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 390b14e5d3e4133408249897c8a396ad
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_5-4.fbx
+  - m_GUID: 4cc96cdc3e0a7774bb51abd927f96886
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -3, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 32c644382d5d92c49a49e08d7f58a335
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_3-5.fbx
+  - m_GUID: a6cdbf97ded7586489449bbe562d2483
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 2, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 131cb141ad3d40746b7d9b0f6cd04510
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_0-7.fbx
+  - m_GUID: d50330deccac669439cb58ab4947374d
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 3, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7148e544a1587f742bf9456e78308914
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_6-8.fbx
+  - m_GUID: e1536b8e98019c142b1bfe3484854181
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 0, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: f0ba0160d6b3f104db7745bc0905ef03
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_4-7.fbx
+  - m_GUID: bee54e1ec023ef041b04582ef4310f5e
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -4, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 33d3559a11640be45b67d7b4852ffe8a
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_3-6.fbx
+  - m_GUID: 9ab9514e39d8be4448b377eb4963cf56
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 0, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: dc20c93849ff0084b925fb0cf68ecf0f
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_1-7.fbx
+  - m_GUID: 1a4823cac4465814fbfbad5cbcf0a251
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -1, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3541574241065844299aa7b8058a5ddc
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_2-8.fbx
+  - m_GUID: 2d51869a190fd8d489a2a42f6b2ee7b5
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -4, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c8dfb0b0946775e4e9254800220af794
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_5-9.fbx
+  - m_GUID: c88cfa97f1debe447a3d423ae0fd4799
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 4, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: fa7a18fdcaf7b074abc75d20108ca9e4
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_7-3.fbx
+  - m_GUID: de1c869b5207fa14a898d9dddb880a75
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -5, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3934b36cee52ec146b7274cff84384e5
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_8-6.fbx
+  - m_GUID: 099b5a69ab24179468762fc8554021f7
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 1, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 744b5b03890aac140bf52317e92f27c6
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_6-5.fbx
+  - m_GUID: 65a5728ac5b15a9479ce5d4a20de6504
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -1, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: bb0c415204d3cc24a84ff3333d21a0b0
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_6-3.fbx
+  - m_GUID: dec433e2236a2a2439ffaa9758c3f5b5
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -2, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 2ddbd9ea8b2704d4da65a8c12848f2a5
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_8-1.fbx
+  - m_GUID: a24ce39038174d842b6a818a9cb184fd
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -5, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3c3dc5911f8768e448a106b2088773fa
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_5-1.fbx
+  - m_GUID: bd429e60359a0ff46a6dcee0fa072420
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 1, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 1f84185613f73ba4cb05d16bade6abe9
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_0-6.fbx
+  - m_GUID: 5f322bb4e4a57414380d6c51c013188c
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -3, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 057eccec38eeea9409c5cac500d76522
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_5-8.fbx
+  - m_GUID: 7df1944acdbc5584ea7464ad4f31a804
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -1, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d88a74de55f3d144e81e1fe6930f30d4
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_0-5.fbx
+  - m_GUID: 2baff6dc9d0d0984ebe337b5ccf85a1c
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -2, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ea73c32d448192a40ae13eebdbcf8966
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_9-5.fbx
+  - m_GUID: 52a5f9404de981d42973d4240a401ad4
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -4, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e0d986cb15375e14ca9ad52a72eb625f
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_3-1.fbx
+  - m_GUID: d93463e484057444fa3a2b870ef03a12
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 3, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a9d33441c6a8d6241bd426444945c85e
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_0-2.fbx
+  - m_GUID: be04bd2dece059b41b6b506235c5b215
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -5, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 66bfcccddd1445d4e811ac2315d1baab
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_2-7.fbx
+  - m_GUID: dfda84f6eddad0f428635b025c3643e0
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -3, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 0b9bb5a46f9128743a14b3db53b2d32b
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_6-0.fbx
+  - m_GUID: 0be3f39d711bbb84e8a9e6cf73766446
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -4, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 51700b7968dfe2b4fa1b37a7b1f09f12
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_2-2.fbx
+  - m_GUID: 2d94b4cbb9b5cf74c950611f5dd136c0
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 1, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 28d4896a9e9ae6e4793585e2987c56d3
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_3-4.fbx
+  - m_GUID: 8b6dc0d46142d284e848b510ad9a46ff
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -5, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 384caedb874d0c24bb5b86178ef53cb0
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_4-2.fbx
+  - m_GUID: f0eca0b36ccfcb348ac1e0ebf838aed2
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 4, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 79cbf85eb37ee424c9a3b72abb9950a5
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_4-6.fbx
+  - m_GUID: d18bf6b9962afad41b7841a0f99a502b
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -1, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5f5c4d405b018c04796f84e2cdde5110
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_2-6.fbx
+  - m_GUID: 06b03d0819ab9544aaacc17ab02b8fdf
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -3, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 03be1300f45e1d64d9c504ae98643fb4
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_0-8.fbx
+  - m_GUID: a15a9bf55375af04aa11ff02d5bf9aff
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 1, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7d3e7db29c755cd468275c0c81d9d4a4
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_8-5.fbx
+  - m_GUID: 3e3f3846cfc96b94a83a9f2acaab8258
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -2, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 06fcf9d47c4059844861e57c83f59bd4
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_1-9.fbx
+  - m_GUID: e01f3b0f296ab4842bf547d04450e778
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -3, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 11ea6ec9a7c95294e936966f690ada35
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_9-2.fbx
+  - m_GUID: 28997837760d4754cb90d26fe2d2274b
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 3, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ebbda7635a92d6e40a16620775f981ce
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_4-4.fbx
+  - m_GUID: 49e6aa0306697ef4886fabc9d323da3d
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -1, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b105b9086e6ac074eaa302102de6cc9a
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_1-1.fbx
+  - m_GUID: 36f2874435207b34581a343f38c03682
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 3, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ce8e199110e85bf46a39645fb90cc9f8
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_1-4.fbx
+  - m_GUID: 1ce56c2d7193d0944abbc2e53bc070e5
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 2, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d554a8543b42f3f47a49dce8be373b58
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_8-9.fbx
+  - m_GUID: 495f015c4552cd749bf3276568973abe
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -1, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c3b041132dda752459069c1eb19faf27
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_5-2.fbx
+  - m_GUID: bbd09a217f2dc53459d4892850a8100a
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -5, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d767988fda4986f4aa3dc10e128ca5bc
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_7-9.fbx
+  - m_GUID: 077f0dbad4aaf3541b13cd34af9db7da
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -2, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ae855b925955d6d4e8e907c4c4007d20
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_6-7.fbx
+  - m_GUID: e1e4efba74592f848b3d17d0fac6726a
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 2, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6698ad58c52532a4ca39cc51d84835d9
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_1-6.fbx
+  - m_GUID: c98da0d60ad31894389ebde4d264cd38
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 2, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6f9e0da152917074e89ab197efacfd7f
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_2-0.fbx
+  - m_GUID: 49223c3a50f0c7a4cab72544703e2d34
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 4, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 19247f4c33bd8114a95b8a28fa543130
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_9-3.fbx
+  - m_GUID: fdcbf10d63efb6f4d86f78be0ed32f35
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 1, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 044bdc55b010503479c52d550fd4fc2c
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_2-4.fbx
+  - m_GUID: 7e0b2c421dfcfcc44816c513b090aa6f
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -2, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4d4e0075a2642424481170f25ab3557c
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_5-3.fbx
+  - m_GUID: 271c4f0b4b1343943bb62fa33ecc364c
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -1, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 000ebbd36cf73d349a5bf263e2638c5d
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_4-9.fbx
+  - m_GUID: deff41b6d96980d4a8641b3b0cd54bc9
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 3, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e8d5856266fc364478d85cc6b4ebf654
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_1-2.fbx
+  - m_GUID: d99b3d477d5b3154c98b9d37a4951656
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -2, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6d6113f3b2e8a0947a00f962e1a94823
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_7-6.fbx
+  - m_GUID: 5a79e36cf5500ea4ba64f50165c2baca
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -4, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d7f27e928f47d8a4fb29875683ef07b5
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_5-5.fbx
+  - m_GUID: 5be7eaaf029bcf44cbf707c58d1a5f11
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -5, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b509c80282ecb22429f3bf44a16db32c
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_3-7.fbx
+  - m_GUID: 64e244397e9c68841a409ae0238c05d6
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 2, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: eab4165446c97024bb02960ada79293b
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_9-4.fbx
+  - m_GUID: 0ebb3b94586e8ad4a9a12a73b4e76c6b
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -1, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3ddf2636c512dcd47b0d145725bcd891
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_9-8.fbx
+  - m_GUID: d8d367f4abc9de94391037dd2383be01
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk 3, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: bb101c9365008784e89037db791d2d77
-    m_Address: Assets/Environment/Kojima Island/Meshes/kojima_1-8.fbx
+  - m_GUID: ff87f05c959b31b43b70bf51934804ec
+    m_Address: Assets/Environment/Chunks/LOD1/Chunk -4, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6df73e9bfe6a9e040a5a18c3c18c26c9
-    m_Address: Assets/Environment/Chunks/Chunk 1, 0, 0.prefab
+  - m_GUID: 8ec15e624e716c74daae1c4773a54a73
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 1, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 45d784f89bbf5394e81deeb5208ab073
-    m_Address: Assets/Environment/Chunks/Chunk 0, 0, 1.prefab
+  - m_GUID: 50f207ccacd1236499da7a7f78d508d8
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -3, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e629450c554fc6c42bcf4b0bdd6e827c
-    m_Address: Assets/Environment/Chunks/Chunk -3, 0, 2.prefab
+  - m_GUID: e77b728ec0ee9754b8ae76f9c7f06cf1
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 1, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 1d21cc81a42b28a4995cae5a88c3fa24
-    m_Address: Assets/Environment/Chunks/Chunk -4, 0, -5.prefab
+  - m_GUID: 344a90b9acc7de2408af09e4dba5d0e6
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -4, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: abf1a3ca595032648bda1ad850ca51fe
-    m_Address: Assets/Environment/Chunks/Chunk 4, 0, -4.prefab
+  - m_GUID: c64f4c4beccdd1c4b9cad2f8e7f1eece
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -2, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a1e7e0ccc78d823469fbcdc0493323de
-    m_Address: Assets/Environment/Chunks/Chunk -1, 0, 0.prefab
+  - m_GUID: c7864f738145023499154f1ae78a9fad
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 0, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: dfa0bf0db82031d4eadd9a45a547b31c
-    m_Address: Assets/Environment/Chunks/Chunk 3, 0, -4.prefab
+  - m_GUID: 62264c669a0b1174384386d932451898
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -4, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9d521d081bc128f479c5bc78d6258bac
-    m_Address: Assets/Environment/Chunks/Chunk 2, 0, -5.prefab
+  - m_GUID: 95d7c06da661171478dcc33dddafa34d
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 0, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 377012b49adf99d48af279d06aae3886
-    m_Address: Assets/Environment/Chunks/Chunk 1, 0, -2.prefab
+  - m_GUID: c4f2647d24d554b4d99fe302c5c2ff8e
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -4, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 17453d508fa88104189d83f2e99af117
-    m_Address: Assets/Environment/Chunks/Chunk -4, 0, -2.prefab
+  - m_GUID: 2d78f1d1768979c4e816b1e75c2d4c9e
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 0, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: dfebd6d3eb58c084798302c2fb789a56
-    m_Address: Assets/Environment/Chunks/Chunk 4, 0, -2.prefab
+  - m_GUID: c7237ef89d3137c43af4feb384b05634
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -1, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7a2890a5349f90a4183740ce941251e8
-    m_Address: Assets/Environment/Chunks/Chunk 4, 0, -5.prefab
+  - m_GUID: 0a19cc52903ba724aa0f554304bdc5b6
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -3, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d8a0cf6eb12636940b2a438780f9c7cb
-    m_Address: Assets/Environment/Chunks/Chunk -2, 0, 0.prefab
+  - m_GUID: 0fd7846ae9f8b7341a9a424e8e2293b8
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 3, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b18581258c9d29d48875dc5c6c08f845
-    m_Address: Assets/Environment/Chunks/Chunk -5, 0, -2.prefab
+  - m_GUID: 7cca2ef07e30670478e9e3737dbba6d1
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 2, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9b93ef8bf0ab564469a76abde401faf4
-    m_Address: Assets/Environment/Chunks/Chunk -4, 0, -1.prefab
+  - m_GUID: 67a8a76f934921b41be3649c07b7854b
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -1, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9a00ed21cf03771468ae90c78bda9822
-    m_Address: Assets/Environment/Chunks/Chunk -1, 0, -4.prefab
+  - m_GUID: ab8a0a395fd3db14eb5306c88f3a50d2
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 2, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7bae6790afc002b48914f99f9d4baaac
-    m_Address: Assets/Environment/Chunks/Chunk -1, 0, 1.prefab
+  - m_GUID: d37f45602769ac54ca64ada58fe9acae
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -3, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 29309c0011735eb49bb93a1881f31fb8
-    m_Address: Assets/Environment/Chunks/Chunk -2, 0, -2.prefab
+  - m_GUID: 95c3292e75ec3fc4ca966048e4d53e2b
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 0, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 942049cc3db08924381b8bf08c2b0cb5
-    m_Address: Assets/Environment/Chunks/Chunk -4, 0, -4.prefab
+  - m_GUID: bcb758bfc9b1af14da47e9265fcee853
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 0, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b64329e9d3b30e84585ee09bcdb1b4ea
-    m_Address: Assets/Environment/Chunks/Chunk -5, 0, -4.prefab
+  - m_GUID: 5303856cb34f9184cb402e2d839e6f89
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -2, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 67b5420957874fe4cb95e64981ca9bfd
-    m_Address: Assets/Environment/Chunks/Chunk -5, 0, 0.prefab
+  - m_GUID: b545d1179f566cf4ab9ed9f9b0c21738
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 2, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b33a54d50a930484cae8bacdf7b5ca95
-    m_Address: Assets/Environment/Chunks/Chunk 3, 0, -5.prefab
+  - m_GUID: b500fe1e7b5768348b0cea142e93adb2
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -4, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9e6a8a22b091eb546833621a5bf74e19
-    m_Address: Assets/Environment/Chunks/Chunk -1, 0, -1.prefab
+  - m_GUID: d8589b93a1e3a724cba3cfc9fb4daae3
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -1, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ddaac086a47838c49b74071205ca0053
-    m_Address: Assets/Environment/Chunks/Chunk 1, 0, -5.prefab
+  - m_GUID: 803ca7afe4f6e114cbb5f33b20e77209
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -2, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a46ffef074657084bb475c9f8d48eaa1
-    m_Address: Assets/Environment/Chunks/Chunk -5, 0, 2.prefab
+  - m_GUID: f6b39ffc684972d4f8f2e25cfeb31385
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -5, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 76e5d7cfe3e33674dbb77af729db02df
-    m_Address: Assets/Environment/Chunks/Chunk -3, 0, -1.prefab
+  - m_GUID: aa60c73dc7f11304e8b4f4db4105c875
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 3, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 95a837b92bf5b1b43adb72b4640ea7e1
-    m_Address: Assets/Environment/Chunks/Chunk 2, 0, -1.prefab
+  - m_GUID: 8caef3eeb0b88ed459d6d831098ab15b
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -1, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d69ae843159039b47b3bd7e9969bae54
-    m_Address: Assets/Environment/Chunks/Chunk -3, 0, -3.prefab
+  - m_GUID: f081e8c8eb3a4804ca144937efe92b79
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 4, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 30f44a7bc018c9c40a75e72427cf0220
-    m_Address: Assets/Environment/Chunks/Chunk 4, 0, 3.prefab
+  - m_GUID: bde175674dce8c44faa1dde6ef173f2d
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 2, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5474207a2cea9734bb59fc1627504f47
-    m_Address: Assets/Environment/Chunks/Chunk -4, 0, 2.prefab
+  - m_GUID: a2d562f32df889941b2eedd130787746
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -1, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: afa43bfa5bf5c07428651ccca620f8b5
-    m_Address: Assets/Environment/Chunks/Chunk 0, 0, -2.prefab
+  - m_GUID: fffae0947157c944d9bd745c185f4862
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -2, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 59291a6eb167c7245914c1524c16fe41
-    m_Address: Assets/Environment/Chunks/Chunk 4, 0, -1.prefab
+  - m_GUID: 6e40e197caeb0654dbb901a16823660e
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -2, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4cfd6b733106f534dbbc5912a7f3539e
-    m_Address: Assets/Environment/Chunks/Chunk 1, 0, -3.prefab
+  - m_GUID: 5ccd239d778fa014eb5cba04ea72e87c
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -5, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5a52c3c8f792121489e982898dc5f792
-    m_Address: Assets/Environment/Chunks/Chunk -2, 0, 1.prefab
+  - m_GUID: 04015e80da66b9f449be97632c1fd0e1
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -5, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 2d543fa676952b94b8b3d0259e4a0612
-    m_Address: Assets/Environment/Chunks/Chunk -2, 0, -4.prefab
+  - m_GUID: 470853c619943534797a79faa71859c0
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -3, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e766e7ed31c850c438e498dcf523bb47
-    m_Address: Assets/Environment/Chunks/Chunk 2, 0, 1.prefab
+  - m_GUID: da2ba9c055d4ff24eac4789eeba4fde0
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 3, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e27962d5e94d9e341875a9a2ff141088
-    m_Address: Assets/Environment/Chunks/Chunk -2, 0, 2.prefab
+  - m_GUID: 2a3d3cc5834fe8f4aa31f5e8307624f5
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 1, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7774b3564ec3b0143833b091249ff599
-    m_Address: Assets/Environment/Chunks/Chunk 2, 0, -4.prefab
+  - m_GUID: 602945937adaa874894d2ffe675559a7
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 3, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 99dfa0ab6f6987b4c81afbf1b4338dc6
-    m_Address: Assets/Environment/Chunks/Chunk 1, 0, 1.prefab
+  - m_GUID: 6f4afeff554d05745ba519f4218863c9
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -5, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4750c2e327d6efb4eab4daf51bc3ffd7
-    m_Address: Assets/Environment/Chunks/Chunk 2, 0, -2.prefab
+  - m_GUID: 81bceb02b15fe7443bfc9ebc9bb6d1aa
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 3, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 97dd762de68f89547a774f4735292c87
-    m_Address: Assets/Environment/Chunks/Chunk 2, 0, -3.prefab
+  - m_GUID: d367882c02038d74597f59e2908709b7
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -3, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 2a7f6ed67d474ca45b922dd75919e123
-    m_Address: Assets/Environment/Chunks/Chunk 3, 0, -3.prefab
+  - m_GUID: 3a4a943a38ac4474dbcbbaf8e7a944d3
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -2, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 726cf0f8cfa9633478614dcc30a0c7f6
-    m_Address: Assets/Environment/Chunks/Chunk -3, 0, -2.prefab
+  - m_GUID: e983e88d66eb1fa4ca6588133ca559d1
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 4, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 25c596144f9cc8c4583e1fca60e4fae7
-    m_Address: Assets/Environment/Chunks/Chunk 3, 0, 1.prefab
+  - m_GUID: 0965b1aabf57b3d45b2714fc1a5872ea
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -4, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c708d8ccdbadf1743bdcc70668d4a739
-    m_Address: Assets/Environment/Chunks/Chunk -1, 0, -2.prefab
+  - m_GUID: e58895631b320024d9c7396da60fef04
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -5, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 30b9134bf2307b44eade0c4618ca51e6
-    m_Address: Assets/Environment/Chunks/Chunk 0, 0, -3.prefab
+  - m_GUID: 59caea0b1f1e312498cca2313124cd97
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 3, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 0680b85faf9fdbb47924041e22772ab3
-    m_Address: Assets/Environment/Chunks/Chunk -2, 0, -1.prefab
+  - m_GUID: 9dfddd0e0308ea749b37810f3592afbe
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -4, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 2585f67c9dec3004d846b3c2471b85d4
-    m_Address: Assets/Environment/Chunks/Chunk 4, 0, 0.prefab
+  - m_GUID: 4734fe6cf6da4e04ea6369355ecc465a
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -3, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 71150d14134ce1e4cb7e27e139322c6a
-    m_Address: Assets/Environment/Chunks/Chunk -5, 0, -1.prefab
+  - m_GUID: 20e2726fb8cc3744e8c24d6275c6214f
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 4, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 529c1f96ebe1064468de7e6340505ebd
-    m_Address: Assets/Environment/Chunks/Chunk 0, 0, 0.prefab
+  - m_GUID: 201c55f06cc190748bff90bb047ef8dd
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 3, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 128e1a42d031a7149888dc75b383faa0
-    m_Address: Assets/Environment/Chunks/Chunk 4, 0, 2.prefab
+  - m_GUID: 4e6e6c4c93b1fd448814ac66134b8c7a
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 1, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c2f5760d232f15843813464cdbbbe51e
-    m_Address: Assets/Environment/Chunks/Chunk 4, 0, -3.prefab
+  - m_GUID: 7e305a51e24c38e42bc4c4589e965f10
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -1, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5bfa452c98fc0984b9a484cd23415e00
-    m_Address: Assets/Environment/Chunks/Chunk -1, 0, -3.prefab
+  - m_GUID: 0cd2e3e0dc5c33b4692f48f20c321830
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -1, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7e4a3b3efcb8c074cb1e5abeb5df3bc0
-    m_Address: Assets/Environment/Chunks/Chunk 2, 0, 2.prefab
+  - m_GUID: 5cbcd4fa86129bb48ad2f5eaae878991
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 0, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4fb4416052c1f234ba94d95065af9dc2
-    m_Address: Assets/Environment/Chunks/Chunk 3, 0, -1.prefab
+  - m_GUID: 5a83db4425b8ba64bbc3b8390337a015
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 1, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 0eee7625e4d356d4eb2d6c7f1b6216d8
-    m_Address: Assets/Environment/Chunks/Chunk -5, 0, 1.prefab
+  - m_GUID: 6f0ff1bfa50856b42a76a75990ec18a7
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -3, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 30cf341894c06cd49b80424aa7e4592d
-    m_Address: Assets/Environment/Chunks/Chunk 0, 0, -1.prefab
+  - m_GUID: 77ca6aa42502792478aba72f0057dda6
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 1, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 0d5ac38dc47f69d4a87b646c4bee960d
-    m_Address: Assets/Environment/Chunks/Chunk -4, 0, -3.prefab
+  - m_GUID: 3c6464f6bcb21d64e9e993e5d837ee61
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 2, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: aefc6f221ee1f3b47b9b6b8f05906c16
-    m_Address: Assets/Environment/Chunks/Chunk 2, 0, 0.prefab
+  - m_GUID: 46e1267c287c65448bd00bcb2cfa669f
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 4, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 55556881b51a56649b57e393ed0c8bc8
-    m_Address: Assets/Environment/Chunks/Chunk -2, 0, -3.prefab
+  - m_GUID: c66ee6c7a4ce7d64a893063a7e2d6b8a
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -4, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: eb3f74f207ce2bb40a8c24662461c14b
-    m_Address: Assets/Environment/Chunks/Chunk -3, 0, -5.prefab
+  - m_GUID: 02474b51b84c3cc46b5f3b07823ef813
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -2, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7b85337c220931e48b95f636cd7d4831
-    m_Address: Assets/Environment/Chunks/Chunk -4, 0, 0.prefab
+  - m_GUID: b48259b15ea25f24687a3727c097a7e5
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 2, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 56eb344f36b9d6d448522b546d74a116
-    m_Address: Assets/Environment/Chunks/Chunk -3, 0, 0.prefab
+  - m_GUID: 30cc289607f57f2419c02d1de7f64787
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -1, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: feb79e78195be6c47960c540d308380a
-    m_Address: Assets/Environment/Chunks/Chunk -4, 0, 1.prefab
+  - m_GUID: f2dcd6e429d104443af2b25bd8bc4ee3
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -3, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 738edbdaafb49a74886696f8a108f2b7
-    m_Address: Assets/Environment/Chunks/Chunk -1, 0, -5.prefab
+  - m_GUID: 784583cf98af94349a42e40652aba343
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -2, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 2f9ea9116f584f84f80dee1142b2ccfb
-    m_Address: Assets/Environment/Chunks/Chunk -5, 0, -5.prefab
+  - m_GUID: 3034d109dd1015d4791518ceb6d61c8b
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 4, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 1411885fd3623de4bb633732ededda8f
-    m_Address: Assets/Environment/Chunks/Chunk -2, 0, -5.prefab
+  - m_GUID: 265c208b513613b4981b67b01877f6ac
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 1, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 2a39e84601820864eab95c01f4e9c323
-    m_Address: Assets/Environment/Chunks/Chunk 1, 0, -4.prefab
+  - m_GUID: 372e787761700b840ae0c0cf46229a3d
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 3, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 46a6775edd14d8947b271aa60f92ff2c
-    m_Address: Assets/Environment/Chunks/Chunk 0, 0, -5.prefab
+  - m_GUID: 5eb58fa3d8da35b48841a97c4c23a692
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -1, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a5cc5587caeec7046a42f20e953b3005
-    m_Address: Assets/Environment/Chunks/Chunk 1, 0, 2.prefab
+  - m_GUID: 18132eb88c44c444696281174efb8d15
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -2, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 31293e7a10d32b041904e3003f60fee1
-    m_Address: Assets/Environment/Chunks/Chunk 0, 0, 2.prefab
+  - m_GUID: 510f7edcda94192478597ddb09ca940d
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -4, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 32266727dcaf2f048a6416ac4758be04
-    m_Address: Assets/Environment/Chunks/Chunk 1, 0, -1.prefab
+  - m_GUID: ac04e1e737768a5458d8d6ceb137e779
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 4, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 18ade52c08c0e2848806fe8c5efbd2be
-    m_Address: Assets/Environment/Chunks/Chunk 0, 0, -4.prefab
+  - m_GUID: e0ca82312a8c4254b9fdd5f87825fe1c
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 4, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e5a6411bb0647dc40918d3d0e7e72534
-    m_Address: Assets/Environment/Chunks/Chunk -5, 0, -3.prefab
+  - m_GUID: 9493199331c5993468264797ad903f51
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -5, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: f3691885a929bd6469ca78b3087d3211
-    m_Address: Assets/Environment/Chunks/Chunk 3, 0, 2.prefab
+  - m_GUID: 34a9b84f659d39643a0f864d13a1777f
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 2, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e4e1f95cb64210242a7555627264ddab
-    m_Address: Assets/Environment/Chunks/Chunk -3, 0, -4.prefab
+  - m_GUID: b5fffad793c35bb46ab6843aa93777fa
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 3, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b00716697d1ee7744aba66538db7fef7
-    m_Address: Assets/Environment/Chunks/Chunk 3, 0, 0.prefab
+  - m_GUID: bae6938a1e1dc294799b4d0ac95c1d2c
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 4, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a613392d3ebde8242aaf36afaacb7e61
-    m_Address: Assets/Environment/Chunks/Chunk 3, 0, -2.prefab
+  - m_GUID: 7dec7a1358161044182ef31363e1440f
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -5, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 905309e5cf5d1754d93b699458f0c50e
-    m_Address: Assets/Environment/Chunks/Chunk -3, 0, 1.prefab
+  - m_GUID: 6658655e490a118448533059b766f2db
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 2, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 72bfa55db4e74b34eb4adb888538a958
-    m_Address: Assets/Environment/Chunks/Chunk -1, 0, 2.prefab
+  - m_GUID: 3dd0518c9bacf5a4bb5a9bfa29399df3
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 0, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 8222f2b02540411419ec267a557389c1
-    m_Address: Assets/Environment/Chunks/Chunk 4, 0, 1.prefab
+  - m_GUID: a2cfa1b36e636b24c9a7872912397741
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 0, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e627dda48572cf742b3b991c0196be30
-    m_Address: Assets/Environment/Chunks/Chunk 3, 0, 3.prefab
+  - m_GUID: 078b72fc76c6deb458d8f0d18c4c9102
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 0, 0, -2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 29f179c6570f13b4db9a49f41d4a8511
-    m_Address: Assets/Environment/Chunks/Chunk 2, 0, 3.prefab
+  - m_GUID: be7e1ba7b0e237148bad7370410a7217
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -5, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: cf3c6d304e53a0a449d4c3a4a6223c21
-    m_Address: Assets/Environment/Chunks/Chunk 1, 0, 3.prefab
+  - m_GUID: f221510a0b9f0fe4db57b05d3ab9f8ef
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 1, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a618cd6c31772564aab23388c101904d
-    m_Address: Assets/Environment/Chunks/Chunk 0, 0, 3.prefab
+  - m_GUID: 4b18480228be39f469074e34cb7ea446
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 2, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a05d7fa0f501bcf41bfa72a24cadb627
-    m_Address: Assets/Environment/Chunks/Chunk -1, 0, 3.prefab
+  - m_GUID: 3fa33f65f9abaa5468d7a05166457212
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -4, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6cee5ac629b1ad343804106e7f287621
-    m_Address: Assets/Environment/Chunks/Chunk -2, 0, 3.prefab
+  - m_GUID: 649ab14d727527444a00f3d8ede8fdde
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 4, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4e19fecf897bc874a8f3eaba77ee973e
-    m_Address: Assets/Environment/Chunks/Chunk -3, 0, 3.prefab
+  - m_GUID: 70cfd4388b8477e40bbcb5dca93a9201
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -2, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e40e4d00770fb67448264984ecc04a2d
-    m_Address: Assets/Environment/Chunks/Chunk -4, 0, 3.prefab
+  - m_GUID: c3e9ba58a98adfc49bc5539897ac1294
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -4, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3eefede03025c2b4aa43697c3aea917a
-    m_Address: Assets/Environment/Chunks/Chunk -5, 0, 3.prefab
+  - m_GUID: 8d12f4f7eda2a734b87d314deb54200d
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 4, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ff24d29ff1b7cd54d9e0f2c301aa1845
-    m_Address: Assets/Environment/Chunks/Chunk 4, 0, 4.prefab
+  - m_GUID: d4b5f048059cd6c4bac2f8aeb4a1d853
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 3, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c7bd32ebfa025d34390fa1abee20303f
-    m_Address: Assets/Environment/Chunks/Chunk 3, 0, 4.prefab
+  - m_GUID: 14937c58ce923544b91cd9f1e4a30857
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -5, 0, -4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 60cf798dc274831459dd422b9a66194a
-    m_Address: Assets/Environment/Chunks/Chunk 2, 0, 4.prefab
+  - m_GUID: dc14b49479fc4e74790f12ef9f47ef46
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 0, 0, -1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 075b9a16a7163534b8a318bea4ec3780
-    m_Address: Assets/Environment/Chunks/Chunk 1, 0, 4.prefab
+  - m_GUID: c8cb1eec627e6f944b73f5363565d168
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -1, 0, -3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 2779cc0aa31053b4c801fe7e176be604
-    m_Address: Assets/Environment/Chunks/Chunk 0, 0, 4.prefab
+  - m_GUID: 6fe41572b490349459f4077dee5a39d1
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -3, 0, 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6a303561d6ff21a4996def14ffb957f1
-    m_Address: Assets/Environment/Chunks/Chunk -1, 0, 4.prefab
+  - m_GUID: eb4f4a541e6d92242877451e91c96a4e
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 1, 0, 0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: dbc25240978aad24297b7baeeee45354
-    m_Address: Assets/Environment/Chunks/Chunk -2, 0, 4.prefab
+  - m_GUID: fa0b6b73d49e8884588b4fab571c0f8c
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 1, 0, 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 02383c9b628222a4282bcc3ed73ad557
-    m_Address: Assets/Environment/Chunks/Chunk -3, 0, 4.prefab
+  - m_GUID: 1c2586409c9600c4d85c5d9f8d169e11
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -3, 0, -5.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 29fc892fa7ce9f14091448069b29e5f2
-    m_Address: Assets/Environment/Chunks/Chunk -4, 0, 4.prefab
+  - m_GUID: 55c56d4f20486d24cbe901770e3cfb54
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk 2, 0, 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e6058a76da7775e46817603cb40bd675
-    m_Address: Assets/Environment/Chunks/Chunk -5, 0, 4.prefab
+  - m_GUID: 41fc3a920e476c344980334fe46d7a2b
+    m_Address: Assets/Environment/Chunks/LOD0/Chunk -5, 0, 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
