@@ -18,6 +18,6 @@ MonoBehaviour:
   - key: building
     value: 
   materials:
-  - {fileID: 2100000, guid: 279ccda5c59adad4c955773b076df31c, type: 2}
+  - {fileID: 2100000, guid: 36baa6131d6efdf44a10834df32480d2, type: 2}
   defaultLevels: 1
   defaultHeight: 6

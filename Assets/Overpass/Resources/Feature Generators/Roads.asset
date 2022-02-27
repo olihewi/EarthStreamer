@@ -18,7 +18,7 @@ MonoBehaviour:
   - key: highway
     value: 
   materials:
-  - {fileID: 2100000, guid: e9b2eaaa1edf5584d92b0cea6e40ddfa, type: 2}
+  - {fileID: 2100000, guid: c386b7317073010468ad290af7d63083, type: 2}
   width: 4
   widths:
   - typeIdentifier: motorway
@@ -44,5 +44,7 @@ MonoBehaviour:
   - typeIdentifier: footway
     width: 1.2
   - typeIdentifier: path
+    width: 1
+  - typeIdentifier: steps
     width: 1
   yOffset: 0.02

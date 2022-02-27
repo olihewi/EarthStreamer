@@ -65,7 +65,9 @@ namespace Maps.Features
 
     protected void TriangulatePath(List<Vector3> _nodes, FeatureMeshData _meshData, float _width)
     {
+      // TODO: Work out how to handle branching roads (this will be hard!)
       int triOffsetBefore = _meshData.triOffset - _meshData.vertices.Count;
+      float totalDist = 0;
       for (int i = 0; i < _nodes.Count; i++)
       {
         Vector3 forward = Vector3.zero;
@@ -92,10 +94,13 @@ namespace Maps.Features
         {
           forward = (_nodes[1] - _nodes[0]) + (_nodes[0] - _nodes[_nodes.Count - 2]);
         }
-        forward.Normalize();
         Vector3 left = new Vector3(-forward.z, 0.0F, forward.x);
+        left.Normalize();
         _meshData.vertices.Add(_nodes[i] + left * _width * 0.5F);
         _meshData.vertices.Add(_nodes[i] - left * _width * 0.5F);
+        _meshData.uvs.Add(new Vector2(0.0F,totalDist));
+        _meshData.uvs.Add(new Vector2(1.0F, totalDist));
+        totalDist += forward.magnitude;
       }
       _meshData.triOffset = triOffsetBefore + _meshData.vertices.Count;
     }

@@ -18,5 +18,5 @@ MonoBehaviour:
   - key: amenity
     value: parking
   materials:
-  - {fileID: 2100000, guid: 71b19372203fd9446bac4e8ad18a9b11, type: 2}
+  - {fileID: 2100000, guid: c00b43f61d7541043b2b37a2a6dc2653, type: 2}
   yOffset: 0.01

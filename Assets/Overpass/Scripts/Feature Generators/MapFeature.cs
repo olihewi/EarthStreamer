@@ -37,6 +37,7 @@ namespace Maps.Features
     {
       public List<Vector3> vertices = new List<Vector3>();
       public List<int> triangles = new List<int>();
+      public List<Vector2> uvs = new List<Vector2>();
       public int triOffset = 0;
     }
 
@@ -88,6 +89,7 @@ namespace Maps.Features
       if (!IsPolygonClockwise(_nodes)) _nodes.Reverse();
       Vector3 floorPos = Vector3.up * _floorHeight;
       Vector3 roofPos = Vector3.up * _height;
+      float uvX = 0.0F;
       for (int i = 0; i < _nodes.Count - 1; i++)
       {
         _meshData.vertices.AddRange(new[]
@@ -106,6 +108,15 @@ namespace Maps.Features
           _meshData.triOffset + 3,
           _meshData.triOffset + 2
         });
+        float dist = Vector3.Distance(_nodes[i], _nodes[i + 1]);
+        _meshData.uvs.AddRange(new []
+        {
+          new Vector2(uvX,_floorHeight),
+          new Vector2(uvX,_height),
+          new Vector2(uvX + dist, _height),
+          new Vector2(uvX + dist, _floorHeight), 
+        });
+        uvX += dist;
         _meshData.triOffset += 4;
       }
 
@@ -117,6 +128,11 @@ namespace Maps.Features
       int triOffsetBefore = _meshData.triOffset - _meshData.vertices.Count;
       if (IsPolygonClockwise(_nodes) == facingDown) _nodes.Reverse();
       _meshData.vertices.AddRange(_nodes);
+      foreach (Vector3 node in _nodes)
+      {
+        // TODO: Use material scaling
+        _meshData.uvs.Add(new Vector2(node.x, node.z));
+      }
       if (IsPolygonConvex(_nodes)) TriangulateConvex(_nodes, _meshData);
       else TriangulateConcave(_nodes, _meshData);
       _meshData.triOffset = triOffsetBefore + _meshData.vertices.Count;

@@ -61,6 +61,7 @@ namespace Maps.Features
                 MapFeature.FeatureMeshData newData = generator.GetMesh(way, nodeRefs, meshData.triOffset);
                 meshData.vertices.AddRange(newData.vertices);
                 meshData.triangles.AddRange(newData.triangles);
+                meshData.uvs.AddRange(newData.uvs);
                 meshData.triOffset = meshData.vertices.Count;
             }
 
@@ -76,6 +77,7 @@ namespace Maps.Features
                 mesh.indexFormat = IndexFormat.UInt32;
                 mesh.vertices = featurePair.Value.vertices.ToArray();
                 mesh.triangles = featurePair.Value.triangles.ToArray();
+                mesh.uv = featurePair.Value.uvs.ToArray();
                 mesh.RecalculateNormals();
                 meshFilter.sharedMesh = mesh;
             }
