@@ -17,9 +17,7 @@ namespace Maps.Features
         [Header("Overpass API Query")]
         public string filePath;
         public Rect boundingBox;
-        
-        [TextArea(1,8)] public string request;
-        
+
         private Dictionary<long, Vector3> nodes = new Dictionary<long, Vector3>();
     
         // Way: 916667470
@@ -42,12 +40,13 @@ namespace Maps.Features
             {
                 long id = long.Parse(node.Attribute("id").Value);
                 if (nodes.ContainsKey(id)) continue;
-                nodes.Add(id,new Vector3((float.Parse(node.Attribute("lon").Value) + 2.58F) * 40000.0F,0.0F,(float.Parse(node.Attribute("lat").Value) - 51.5F) * 40000.0F));
+                nodes.Add(id,new Vector3((float.Parse(node.Attribute("lon").Value) - boundingBox.x) * 40000.0F,0.0F,(float.Parse(node.Attribute("lat").Value) - boundingBox.y) * 40000.0F));
             }
             
             /* Generate the meshes for each way. */
             Dictionary<MapFeature, MapFeature.FeatureMeshData> featureTypes = new Dictionary<MapFeature, MapFeature.FeatureMeshData>();
-            foreach (XElement way in response.Elements("way"))
+            IEnumerable<XElement> ways = response.Elements("way");
+            foreach (XElement way in ways)
             {
                 List<Vector3> nodeRefs = new List<Vector3>();
                 MapFeature generator = MapFeature.GetFeatureGenerator(way);
@@ -64,6 +63,8 @@ namespace Maps.Features
                 meshData.uvs.AddRange(newData.uvs);
                 meshData.triOffset = meshData.vertices.Count;
             }
+            Path.GenerateHighwayNetwork(nodes, ways);
+            Path.GenerateHighwayMeshes(transform);
 
             foreach (KeyValuePair<MapFeature, MapFeature.FeatureMeshData> featurePair in featureTypes)
             {

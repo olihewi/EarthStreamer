@@ -56,9 +56,9 @@ namespace Maps.Features
     {
       GENERATOR_TYPES = new List<MapFeature>();
       GENERATOR_TYPES.AddRange(Resources.LoadAll<MapFeature>(""));
+      MapFeature[] mapFeatures = new MapFeature[1];
       // TODO: Make sure this sorts the right way.
-      GENERATOR_TYPES.Sort((_a, _b) => _a.priority - _b.priority);
-      Debug.Log($"Registered {GENERATOR_TYPES.Count} Feature Generators");
+      GENERATOR_TYPES.Sort((_a, _b) => _b.priority - _a.priority);
     }
 
     public static MapFeature GetFeatureGenerator(XElement _way)
@@ -71,19 +71,25 @@ namespace Maps.Features
       }
       foreach (MapFeature generator in GENERATOR_TYPES)
       {
+        bool conditionsMet = true;
         foreach (GenerationCondition condition in generator.generationConditions)
         {
           // TODO: Make all conditions need to be met.
-          if (wayTags.ContainsKey(condition.key) && (condition.value == "" || wayTags[condition.key].Contains(condition.value)))
-            return generator;
+          if (!(wayTags.ContainsKey(condition.key) && (condition.value == "" || wayTags[condition.key].Contains(condition.value))))
+          {
+            conditionsMet = false;
+            break;
+          }
         }
+        if (conditionsMet)
+          return generator;
       }
       return null;
     }
     
     public abstract FeatureMeshData GetMesh(XElement _way, List<Vector3> _nodes, int _triOffset);
     
-    protected void ExtrudeWalls(List<Vector3> _nodes, FeatureMeshData _meshData, float _floorHeight, float _height)
+    protected static void ExtrudeWalls(List<Vector3> _nodes, FeatureMeshData _meshData, float _floorHeight, float _height)
     {
       int triOffsetBefore = _meshData.triOffset - _meshData.vertices.Count;
       if (!IsPolygonClockwise(_nodes)) _nodes.Reverse();
@@ -123,11 +129,10 @@ namespace Maps.Features
       _meshData.triOffset = triOffsetBefore + _meshData.vertices.Count;
     }
 
-    protected void TriangulatePolygon(List<Vector3> _nodes, FeatureMeshData _meshData, bool facingDown = false)
+    protected static void TriangulatePolygon(List<Vector3> _nodes, FeatureMeshData _meshData, bool facingDown = false)
     {
       int triOffsetBefore = _meshData.triOffset - _meshData.vertices.Count;
       if (IsPolygonClockwise(_nodes) == facingDown) _nodes.Reverse();
-      _meshData.vertices.AddRange(_nodes);
       foreach (Vector3 node in _nodes)
       {
         // TODO: Use material scaling
@@ -138,21 +143,23 @@ namespace Maps.Features
       _meshData.triOffset = triOffsetBefore + _meshData.vertices.Count;
     }
 
-    protected void TriangulateConvex(List<Vector3> _nodes, FeatureMeshData _meshData)
+    protected static void TriangulateConvex(List<Vector3> _nodes, FeatureMeshData _meshData)
     {
+      _meshData.vertices.AddRange(_nodes);
       for (int i = 2; i < _nodes.Count; i++)
       {
         _meshData.triangles.AddRange(new[]
         {
-          0,
-          i - 1,
-          i
+          _meshData.triOffset,
+          _meshData.triOffset + i - 1,
+          _meshData.triOffset + i
         });
       }
     }
 
-    protected void TriangulateConcave(List<Vector3> _nodes, FeatureMeshData _meshData)
+    protected static void TriangulateConcave(List<Vector3> _nodes, FeatureMeshData _meshData)
     {
+      _meshData.vertices.AddRange(_nodes);
       /* Create List of TriangleVertexData */
       List<TriangleVertexData> vertices = _nodes.Select((t, i) => new TriangleVertexData {index = i, pos = t}).ToList();
       /* Register Vertex Neighbours */
@@ -213,13 +220,13 @@ namespace Maps.Features
         });
     }
 
-    protected bool IsTriangleClockwise(Vector3 _a, Vector3 _b, Vector3 _c)
+    protected static bool IsTriangleClockwise(Vector3 _a, Vector3 _b, Vector3 _c)
     {
       float determinant = _a.x * _b.z + _c.x * _a.z + _b.x * _c.z - _a.x * _c.z - _c.x * _b.z - _b.x * _a.z;
       return determinant < 0.0F;
     }
 
-    protected bool IsPolygonClockwise(List<Vector3> _points)
+    protected static bool IsPolygonClockwise(List<Vector3> _points)
     {
       float edgeSum = 0.0F;
       for (int i = 0; i < _points.Count - 1; i++)
@@ -230,13 +237,13 @@ namespace Maps.Features
       return edgeSum > 0.0F;
     }
 
-    protected bool IsPolygonConvex(List<Vector3> _points)
+    protected static bool IsPolygonConvex(List<Vector3> _points)
     {
       // TODO: Check if making this physically accurate improves performance
       return _points.Count == 4;
     }
 
-    protected bool IsPointInTriangle(Vector3 _a, Vector3 _b, Vector3 _c, Vector3 _p)
+    protected static bool IsPointInTriangle(Vector3 _a, Vector3 _b, Vector3 _c, Vector3 _p)
     {
       float denominator = ((_b.z - _c.z) * (_a.x - _c.x) + (_c.x - _b.x) * (_a.z - _c.z));
 
@@ -247,12 +254,12 @@ namespace Maps.Features
       return a > 0.0F && a < 1.0F && b > 1.0F && b < 1.0F && c > 0.0F && c < 1.0F;
     }
 
-    protected bool IsVertexConvex(TriangleVertexData _vertex)
+    protected static bool IsVertexConvex(TriangleVertexData _vertex)
     {
       return IsTriangleClockwise(_vertex.prev.pos, _vertex.pos, _vertex.next.pos);
     }
 
-    protected bool IsEar(TriangleVertexData _v, List<TriangleVertexData> _vertices)
+    protected static bool IsEar(TriangleVertexData _v, List<TriangleVertexData> _vertices)
     {
       if (!_v.convex) return false;
       foreach (TriangleVertexData vertex in _vertices)
@@ -267,7 +274,7 @@ namespace Maps.Features
       return true;
     }
 
-    protected int ClampListIndex(int _i, int _size)
+    protected static int ClampListIndex(int _i, int _size)
     {
       return (_i + _size) % _size;
     }

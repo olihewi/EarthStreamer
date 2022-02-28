@@ -19,4 +19,4 @@ MonoBehaviour:
     value: wood
   materials:
   - {fileID: 2100000, guid: 7c335bb2da87f9e41bf609fd6c6f8cc9, type: 2}
-  yOffset: 0.005
+  yOffset: -0.005

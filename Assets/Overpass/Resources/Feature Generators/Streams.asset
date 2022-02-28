@@ -20,29 +20,4 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: 4a6b24423f1fa59489f18b5af572d1a4, type: 2}
   width: 1
-  widths:
-  - typeIdentifier: motorway
-    width: 10.8
-  - typeIdentifier: trunk
-    width: 7.2
-  - typeIdentifier: primary
-    width: 9
-  - typeIdentifier: secondary
-    width: 7.2
-  - typeIdentifier: tertiary
-    width: 6.8
-  - typeIdentifier: unclassified
-    width: 5.4
-  - typeIdentifier: residential
-    width: 4
-  - typeIdentifier: service
-    width: 3.6
-  - typeIdentifier: track
-    width: 3.2
-  - typeIdentifier: road
-    width: 3.6
-  - typeIdentifier: footway
-    width: 1.2
-  - typeIdentifier: path
-    width: 1
   yOffset: 0.015
