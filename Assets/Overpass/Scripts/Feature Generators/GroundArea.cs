@@ -10,17 +10,27 @@ namespace Maps.Features
   public class GroundArea : MapFeature
   {
     public float yOffset = 0.01F;
-    public override FeatureMeshData GetMesh(XElement _way, List<Vector3> _nodes, int _triOffset)
+    public override FeatureMeshData GetMesh(Way _way, int _triOffset)
     {
       Vector3 offset = Vector3.up * yOffset;
-      for (int i = 0; i < _nodes.Count; i++)
+      List<Vector3> nodes = new List<Vector3>();
+      foreach (Node node in _way.nodes)
       {
-        _nodes[i] += offset;
+        nodes.Add(node.position + offset);
       }
       FeatureMeshData meshData = new FeatureMeshData();
       meshData.triOffset = _triOffset;
-      TriangulatePolygon(_nodes, meshData);
+      TriangulatePolygon(nodes, meshData);
       return meshData;
+    }
+
+    public override FeatureMeshData GetMesh(Node _node, int _triOffset)
+    {
+      return new FeatureMeshData();
+    }
+    public override FeatureMeshData GetMesh(Relation _relation, int _triOffset)
+    {
+      return new FeatureMeshData();
     }
   }
 }

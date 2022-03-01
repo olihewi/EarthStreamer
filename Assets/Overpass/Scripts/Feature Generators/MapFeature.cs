@@ -13,7 +13,8 @@ namespace Maps.Features
     {
       Node,
       Way,
-      Relation
+      Relation,
+      HighwayNetworkElement
     }
 
     [Serializable]
@@ -22,6 +23,7 @@ namespace Maps.Features
       public string key;
       public string value;
     }
+    
 
     [Tooltip("The type of map element this will generate on. See https://wiki.openstreetmap.org/wiki/Elements")]
     public MapElement elementType = MapElement.Way;
@@ -61,21 +63,14 @@ namespace Maps.Features
       GENERATOR_TYPES.Sort((_a, _b) => _b.priority - _a.priority);
     }
 
-    public static MapFeature GetFeatureGenerator(XElement _way)
+    public static MapFeature GetFeatureGenerator(OSMType _feature)
     {
-      Dictionary<string,string> wayTags = new Dictionary<string, string>();
-      foreach (XElement tag in _way.Elements("tag"))
-      {
-        KeyValuePair<string, string> thisTag = new KeyValuePair<string, string>(tag.Attribute("k").Value, tag.Attribute("v").Value);
-        wayTags.Add(thisTag.Key, thisTag.Value);
-      }
       foreach (MapFeature generator in GENERATOR_TYPES)
       {
         bool conditionsMet = true;
         foreach (GenerationCondition condition in generator.generationConditions)
         {
-          // TODO: Make all conditions need to be met.
-          if (!(wayTags.ContainsKey(condition.key) && (condition.value == "" || wayTags[condition.key].Contains(condition.value))))
+          if (!(_feature.tags.ContainsKey(condition.key) && (condition.value == "" || _feature.tags[condition.key].Contains(condition.value))))
           {
             conditionsMet = false;
             break;
@@ -87,9 +82,11 @@ namespace Maps.Features
       return null;
     }
     
-    public abstract FeatureMeshData GetMesh(XElement _way, List<Vector3> _nodes, int _triOffset);
+    public abstract FeatureMeshData GetMesh(Way _way, int _triOffset);
+    public abstract FeatureMeshData GetMesh(Node _node, int _triOffset);
+    public abstract FeatureMeshData GetMesh(Relation _relation, int _triOffset);
     
-    protected static void ExtrudeWalls(List<Vector3> _nodes, FeatureMeshData _meshData, float _floorHeight, float _height)
+    public static void ExtrudeWalls(List<Vector3> _nodes, FeatureMeshData _meshData, float _floorHeight, float _height)
     {
       int triOffsetBefore = _meshData.triOffset - _meshData.vertices.Count;
       if (!IsPolygonClockwise(_nodes)) _nodes.Reverse();
@@ -129,13 +126,12 @@ namespace Maps.Features
       _meshData.triOffset = triOffsetBefore + _meshData.vertices.Count;
     }
 
-    protected static void TriangulatePolygon(List<Vector3> _nodes, FeatureMeshData _meshData, bool facingDown = false)
+    public static void TriangulatePolygon(List<Vector3> _nodes, FeatureMeshData _meshData, bool facingDown = false)
     {
       int triOffsetBefore = _meshData.triOffset - _meshData.vertices.Count;
       if (IsPolygonClockwise(_nodes) == facingDown) _nodes.Reverse();
       foreach (Vector3 node in _nodes)
       {
-        // TODO: Use material scaling
         _meshData.uvs.Add(new Vector2(node.x, node.z));
       }
       if (IsPolygonConvex(_nodes)) TriangulateConvex(_nodes, _meshData);
@@ -143,7 +139,7 @@ namespace Maps.Features
       _meshData.triOffset = triOffsetBefore + _meshData.vertices.Count;
     }
 
-    protected static void TriangulateConvex(List<Vector3> _nodes, FeatureMeshData _meshData)
+    public static void TriangulateConvex(List<Vector3> _nodes, FeatureMeshData _meshData)
     {
       _meshData.vertices.AddRange(_nodes);
       for (int i = 2; i < _nodes.Count; i++)
@@ -157,7 +153,7 @@ namespace Maps.Features
       }
     }
 
-    protected static void TriangulateConcave(List<Vector3> _nodes, FeatureMeshData _meshData)
+    public static void TriangulateConcave(List<Vector3> _nodes, FeatureMeshData _meshData)
     {
       _meshData.vertices.AddRange(_nodes);
       /* Create List of TriangleVertexData */
@@ -274,7 +270,7 @@ namespace Maps.Features
       return true;
     }
 
-    protected static int ClampListIndex(int _i, int _size)
+    public static int ClampListIndex(int _i, int _size)
     {
       return (_i + _size) % _size;
     }

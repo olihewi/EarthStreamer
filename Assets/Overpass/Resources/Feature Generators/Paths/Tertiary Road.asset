@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44131a19e6accb4581f17835e82a3b4, type: 3}
   m_Name: Tertiary Road
   m_EditorClassIdentifier: 
-  elementType: 1
-  priority: 0
+  elementType: 3
+  priority: 6
   generationConditions:
   - key: highway
     value: tertiary

@@ -15,51 +15,45 @@ namespace Maps.Features
     [Tooltip("The height of the building in meters.")]
     public float defaultHeight = 6.0F;
 
-    public override FeatureMeshData GetMesh(XElement _way, List<Vector3> _nodes, int _triOffset)
+    public override FeatureMeshData GetMesh(Way _way, int _triOffset)
     {
-      /* Getting Building Info */
+      // Get Building Data
       int buildingLevels = defaultLevels;
       float buildingHeight = defaultHeight;
       float buildingMinHeight = 0.0F;
-      foreach (XElement tag in _way.Elements("tag"))
-      {
-        switch (tag.Attribute("k").Value)
-        {
-          case "building:levels":
-            buildingLevels = int.Parse(tag.Attribute("v").Value);
-            break;
-          case "height":
-            buildingHeight = float.Parse(tag.Attribute("v").Value);
-            break;
-          case "min_height":
-            buildingMinHeight = float.Parse(tag.Attribute("v").Value);
-            break;
-        }
-      }
+
+      if (_way.tags.ContainsKey("height")) buildingHeight = float.Parse(_way.tags["height"]);
+      if (_way.tags.ContainsKey("min_height")) buildingMinHeight = float.Parse(_way.tags["min_height"]);
+      if (_way.tags.ContainsKey("building:levels")) buildingLevels = int.Parse(_way.tags["building:levels"]);
       if (buildingHeight == defaultHeight && buildingLevels != defaultLevels) buildingHeight *= buildingLevels / 2.0F;
 
-      /* Extruding Vertices */
-      if (!IsPolygonClockwise(_nodes)) _nodes.Reverse();
+      // Extruding Walls
+      List<Vector3> nodes = new List<Vector3>();
+      foreach (Node node in _way.nodes)
+      {
+        nodes.Add(node.position);
+      }
+      if (!IsPolygonClockwise(nodes)) nodes.Reverse();
       FeatureMeshData meshData = new FeatureMeshData();
       meshData.triOffset = _triOffset;
       
-      ExtrudeWalls(_nodes, meshData, buildingMinHeight, buildingHeight);
+      ExtrudeWalls(nodes, meshData, buildingMinHeight, buildingHeight);
       Vector3 roofPos = Vector3.up * buildingHeight;
-      for (int i = 0; i < _nodes.Count; i++)
+      for (int i = 0; i < nodes.Count; i++)
       {
-        _nodes[i] += roofPos;
+        nodes[i] += roofPos;
       }
-      TriangulatePolygon(_nodes, meshData);
-      /*if (buildingMinHeight > 0.0F)
-      {
-        Vector3 roofMinusFloor = Vector3.up * (buildingHeight - buildingMinHeight);
-        for (int i = 0; i < _nodes.Count; i++)
-        {
-          _nodes[i] -= roofMinusFloor;
-        }
-        TriangulatePolygon(_nodes, meshData, true);
-      }*/
+      TriangulatePolygon(nodes, meshData);
       return meshData;
+    }
+    
+    public override FeatureMeshData GetMesh(Node _node, int _triOffset)
+    {
+      return new FeatureMeshData();
+    }
+    public override FeatureMeshData GetMesh(Relation _relation, int _triOffset)
+    {
+      return new FeatureMeshData();
     }
   }
 }
