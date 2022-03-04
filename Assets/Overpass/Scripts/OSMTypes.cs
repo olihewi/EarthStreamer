@@ -12,7 +12,7 @@ namespace Maps
   [Serializable]
   public abstract class OSMType
   {
-    public Dictionary<string, string> tags;
+    public Dictionary<string, string> tags = new Dictionary<string, string>();
   }
 
   [Serializable]

@@ -156,18 +156,37 @@ namespace Maps
             if (otherConnection == element) break;
             j++;
           }
-          List<Vector3> nodes = new List<Vector3>();
-          nodes.AddRange(new []
-          {
-            element.node.position, element.normals[i], connection.normals[MapFeature.ClampListIndex(j+1,connection.normals.Count)], connection.node.position, connection.normals[j], element.normals[MapFeature.ClampListIndex(i+1, element.normals.Count)]
-          });
-          MapFeature.TriangulateConvex(nodes, meshData);
           float dist = Vector3.Distance(element.node.position, connection.node.position);
-          meshData.uvs.AddRange(new []
+          if (element.connections.Count <= 2 && connection.connections.Count <= 2)
           {
-            new Vector2(0.5F,element.distSincePrev), new Vector2(0.0F,element.distSincePrev), new Vector2(0.0F,element.distSincePrev + dist),
-            new Vector2(0.5F,element.distSincePrev + dist), new Vector2(1.0F,element.distSincePrev + dist), new Vector2(1.0F,element.distSincePrev),  
-          });
+            meshData.vertices.AddRange(new []
+            {
+              element.normals[i], connection.normals[MapFeature.ClampListIndex(j+1, connection.normals.Count)], connection.normals[j], element.normals[MapFeature.ClampListIndex(i+1, element.normals.Count)]
+            });
+            meshData.triangles.AddRange(new []
+            {
+              meshData.triOffset, meshData.triOffset+1, meshData.triOffset+3,
+              meshData.triOffset+1, meshData.triOffset+2, meshData.triOffset+3
+            });
+            meshData.uvs.AddRange(new []
+            {
+              new Vector2(0.0F, element.distSincePrev), new Vector2(0.0F, element.distSincePrev + dist), new Vector2(1.0F, element.distSincePrev + dist), new Vector2(1.0F, element.distSincePrev),   
+            });
+          }
+          else
+          {
+            List<Vector3> nodes = new List<Vector3>();
+            nodes.AddRange(new []
+            {
+              element.node.position, element.normals[i], connection.normals[MapFeature.ClampListIndex(j+1,connection.normals.Count)], connection.node.position, connection.normals[j], element.normals[MapFeature.ClampListIndex(i+1, element.normals.Count)]
+            });
+            MapFeature.TriangulateConvex(nodes, meshData);
+            meshData.uvs.AddRange(new []
+            {
+              new Vector2(0.5F,element.distSincePrev), new Vector2(0.0F,element.distSincePrev), new Vector2(0.0F,element.distSincePrev + dist),
+              new Vector2(0.5F,element.distSincePrev + dist), new Vector2(1.0F,element.distSincePrev + dist), new Vector2(1.0F,element.distSincePrev),  
+            });
+          }
           meshData.triOffset = meshData.vertices.Count;
         }
       }

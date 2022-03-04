@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b6251a5f2fb2394bb46793e5db75f28, type: 3}
-  m_Name: Picnic Table
+  m_Script: {fileID: 11500000, guid: 46aba5db3da69194fa19877cc80d7960, type: 3}
+  m_Name: Parking
   m_EditorClassIdentifier: 
-  elementType: 0
+  elementType: 1
   priority: 0
   generationConditions:
-  - key: leisure
-    value: picnic_table
+  - key: amenity
+    value: parking
   materials:
-  - {fileID: 0}
-  prefab: {fileID: 5372180843099977564, guid: d04b6e3d0b8635a4688b2aef0951b107, type: 3}
+  - {fileID: 2100000, guid: c00b43f61d7541043b2b37a2a6dc2653, type: 2}
+  yOffset: -0.01
