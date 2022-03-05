@@ -34,8 +34,6 @@ namespace Maps
     
     public void GenerateNetwork(IEnumerable<Way> _ways)
     {
-      double time = EditorApplication.timeSinceStartup;
-      MapFeature.RegisterFeatureGenerators();
       Dictionary<HighwayLayer, Dictionary<Node, HighwayElement>> layerNetwork = new Dictionary<HighwayLayer, Dictionary<Node, HighwayElement>>();
       foreach (HighwayLayer layer in networkLayers)
       {
@@ -99,8 +97,6 @@ namespace Maps
           highwayNetwork.Add(elementPair.Value);
         }
       }
-      if (logExecutionTime)
-        Debug.Log($"{gameObject.name}: Generated Highway Network in {EditorApplication.timeSinceStartup - time:F}s ({highwayNetwork.Count} nodes)");
     }
     
     public void GenerateMeshes()
@@ -205,7 +201,6 @@ namespace Maps
     
     [Header("Debug")]
     [SerializeField] private bool visualize = false;
-    [SerializeField] private bool logExecutionTime = false;
     private void OnDrawGizmosSelected()
     {
       if (!visualize || highwayNetwork == null) return;

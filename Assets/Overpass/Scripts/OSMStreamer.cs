@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Maps.Features;
+using Unity.Jobs;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -18,34 +20,53 @@ namespace Maps
 
     [Header("Mesh Generation")] public HighwayNetwork highwayNetwork;
 
-    [HideInInspector] public Node[] nodes;
-    [HideInInspector] public Way[] ways;
-    [HideInInspector] public Relation[] relations;
-    
-    [Header("Debug")] [SerializeField] private bool logExecutionTime = false;
+    public Node[] nodes;
+    public Way[] ways;
+    public Relation[] relations;
 
     private void Awake()
     {
-      GenerateEverything();
+      Generate();
     }
 
-    [ContextMenu("Generate Everything")]
-    public void GenerateEverything()
-    {
-      GenerateData();
-      GenerateMeshes();
-    }
-
-    [ContextMenu("Generate Data")]
-    public void GenerateData()
+    [ContextMenu("Generate")]
+    public async void Generate()
     {
       double time = EditorApplication.timeSinceStartup;
-      XElement response = XDocument.Load(filePath).Element("osm");
-      if (logExecutionTime)
+      MapFeature.RegisterFeatureGenerators();
+      await Task.Run(GenerateData);
+      Dictionary<MapFeature, MapFeature.FeatureMeshData> featureTypes = new Dictionary<MapFeature, MapFeature.FeatureMeshData>();
+      await Task.Run(() => GenerateMeshes(featureTypes));
+      // Clear children
+      while (transform.childCount != 0)
       {
-        Debug.Log($"{gameObject.name}: Loaded {filePath} in {EditorApplication.timeSinceStartup - time:F}s");
-        time = EditorApplication.timeSinceStartup;
+        DestroyImmediate(transform.GetChild(0).gameObject);
       }
+      // Create a new mesh GameObject for each feature generator type
+      foreach (KeyValuePair<MapFeature, MapFeature.FeatureMeshData> featurePair in featureTypes)
+      {
+        // TODO: See if using prefabs for this is more efficient.
+        MeshFilter meshFilter = new GameObject(featurePair.Key.name,new [] {typeof(MeshFilter), typeof(MeshRenderer)}).GetComponent<MeshFilter>();
+        MeshRenderer meshRenderer = meshFilter.GetComponent<MeshRenderer>();
+        meshRenderer.sharedMaterials = featurePair.Key.materials;
+        meshFilter.transform.parent = transform;
+        // Create the new mesh
+        Mesh mesh = new Mesh();
+        mesh.indexFormat = IndexFormat.UInt32;
+        mesh.vertices = featurePair.Value.vertices.ToArray();
+        mesh.triangles = featurePair.Value.triangles.ToArray();
+        mesh.uv = featurePair.Value.uvs.ToArray();
+        mesh.RecalculateNormals();
+        meshFilter.sharedMesh = mesh;
+      }
+      // TODO: Make this async too
+      highwayNetwork.GenerateMeshes();
+      Debug.Log($"{gameObject.name}: Generated in {EditorApplication.timeSinceStartup - time:F}s");
+    }
+
+    public void GenerateData()
+    {
+      XElement response = XDocument.Load(filePath).Element("osm");
       Vector2 centrePoint = new Vector2(boundingBox.x + boundingBox.width / 2.0F, boundingBox.y - boundingBox.height / 2.0F);
       // Nodes
       Dictionary<long, Node> nodeDict = new Dictionary<long, Node>();
@@ -81,24 +102,12 @@ namespace Maps
         ways[i++] = wayPair.Value;
       }
       relations = relationList.ToArray();
-      if (logExecutionTime)
-        Debug.Log($"{gameObject.name}: Generated Data in {EditorApplication.timeSinceStartup - time:F}s ({nodes.Length} nodes, {ways.Length} ways, {relations.Length} relations)");
       
       highwayNetwork.GenerateNetwork(ways);
     }
     
-    [ContextMenu("Generate Meshes")]
-    public void GenerateMeshes()
+    public void GenerateMeshes(Dictionary<MapFeature, MapFeature.FeatureMeshData> featureTypes)
     {
-      double time = EditorApplication.timeSinceStartup;
-      MapFeature.RegisterFeatureGenerators();
-      // Clear children
-      while (transform.childCount != 0)
-      {
-        DestroyImmediate(transform.GetChild(0).gameObject);
-      }
-      // Mesh generation for each way
-      Dictionary<MapFeature, MapFeature.FeatureMeshData> featureTypes = new Dictionary<MapFeature, MapFeature.FeatureMeshData>();
       foreach (Way way in ways)
       {
         MapFeature generator = MapFeature.GetFeatureGenerator(way);
@@ -135,27 +144,6 @@ namespace Maps
         meshData.uvs.AddRange(newData.uvs);
         meshData.triOffset = meshData.vertices.Count;
       }
-      // Create a new mesh GameObject for each feature generator type
-      foreach (KeyValuePair<MapFeature, MapFeature.FeatureMeshData> featurePair in featureTypes)
-      {
-        // TODO: See if using prefabs for this is more efficient.
-        MeshFilter meshFilter = new GameObject(featurePair.Key.name,new [] {typeof(MeshFilter), typeof(MeshRenderer)}).GetComponent<MeshFilter>();
-        MeshRenderer meshRenderer = meshFilter.GetComponent<MeshRenderer>();
-        meshRenderer.sharedMaterials = featurePair.Key.materials;
-        meshFilter.transform.parent = transform;
-        // Create the new mesh
-        Mesh mesh = new Mesh();
-        mesh.indexFormat = IndexFormat.UInt32;
-        mesh.vertices = featurePair.Value.vertices.ToArray();
-        mesh.triangles = featurePair.Value.triangles.ToArray();
-        mesh.uv = featurePair.Value.uvs.ToArray();
-        mesh.RecalculateNormals();
-        meshFilter.sharedMesh = mesh;
-      }
-      highwayNetwork.GenerateMeshes();
-      
-      if (logExecutionTime)
-        Debug.Log($"{gameObject.name}: Generated Meshes in {EditorApplication.timeSinceStartup - time:F}s");
     }
 
     [ContextMenu("Request New Data from Overpass")]

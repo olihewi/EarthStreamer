@@ -7,15 +7,13 @@ using UnityEngine;
 
 namespace Maps
 {
-  // Nodes are single points in space defined by latitude and longitude.
-  // See: https://wiki.openstreetmap.org/wiki/Node
-  [Serializable]
+  // All element types can have tags.
   public abstract class OSMType
   {
     public Dictionary<string, string> tags = new Dictionary<string, string>();
   }
-
-  [Serializable]
+  // Nodes are single points in space defined by latitude and longitude.
+  // See: https://wiki.openstreetmap.org/wiki/Node
   public class Node : OSMType
   {
     public Node(XElement _element, Vector2 _origin)
@@ -36,7 +34,6 @@ namespace Maps
   }
   // Ways are a line, such as a road, walls or area.
   // See: https://wiki.openstreetmap.org/wiki/Way
-  [Serializable]
   public class Way : OSMType
   {
     public Way(XElement _element, IReadOnlyDictionary<long, Node> _nodes)
@@ -61,7 +58,6 @@ namespace Maps
   }
   // A Relation is an element with a group of members, used to define logical or geographical relationships between objects.
   // See: https://wiki.openstreetmap.org/wiki/Relation
-  [Serializable]
   public class Relation : OSMType
   {
     // Constructor

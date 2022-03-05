@@ -11,6 +11,7 @@ public class EarthChunk : MonoBehaviour
     public Vector2Int coords;
     private int prevZoom = -1;
     private Vector2Int prevCoords = -Vector2Int.one;
+    public float seaLevel = 0.0F;
     
     
     public float heightScale = 1.0F;
@@ -63,10 +64,9 @@ public class EarthChunk : MonoBehaviour
                 float height = ((pixel.r * 65536.0F + pixel.g * 256.0F + pixel.b) - 32768.0F) / 256.0F;
                 if (height > highestH) highestH = height;
                 if (height < lowestH) lowestH = height;
-                vertices.Add(new Vector3((x / (float)texture.width - 0.5F) * 10.0F, height * heightScale, (y / (float)texture.height - 0.5F) * 10.0F));
-                Vector2 uvOffset = new Vector2(coords.x,Mathf.Pow(2,zoomLevel)-coords.y) / (zoomLevel + 1);
-                uvs.Add(new Vector2(x / (float)texture.width,y/(float)texture.height) / (zoomLevel+1) + new Vector2(uvOffset.x, uvOffset.y));
-                texture.SetPixel(x,y, new Color(height > 0 ? 1.0F : 0.0F,height > 0 ? 1.0F : 0.0F,height > 0 ? 1.0F : 0.0F,1.0F));
+                vertices.Add(new Vector3((x / (float)texture.width - 0.5F) * 10.0F, height * heightScale * (zoomLevel+1), (y / (float)texture.height - 0.5F) * 10.0F));
+                uvs.Add(new Vector2(x / (float)texture.width, y / (float)texture.width));
+                texture.SetPixel(x,y, new Color(height > seaLevel ? 1.0F : 0.0F,height > seaLevel ? 1.0F : 0.0F,height > seaLevel ? 1.0F : 0.0F,1.0F));
             }
         }
         int[] triangles = new int[(texture.width - 1) * (texture.height - 1) * 6];
