@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &316995142228495740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 316995142228495738}
+  - component: {fileID: 316995142228495741}
+  - component: {fileID: 316995142228495739}
+  m_Layer: 0
+  m_Name: OSM Chunk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &316995142228495738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316995142228495740}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &316995142228495741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316995142228495740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708a1858bdf92af488080c093869df51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filePath: Assets/Overpass/Exports/frenchay_campus.xml
+  boundingBox:
+    serializedVersion: 2
+    x: -2.559459
+    y: 51.51099
+    width: 0.02
+    height: 0.02
+  highwayNetwork: {fileID: 316995142228495739}
+  newMeshPrefab: {fileID: 7131880663524246733, guid: 3586258ee0b932d428a1adff42fd7457, type: 3}
+--- !u!114 &316995142228495739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316995142228495740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e486695479f7ddc4a97346ea715be330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkLayers:
+  - connections:
+    - {fileID: 11400000, guid: 19dc40ff807217c49a90cce2ffd951a4, type: 2}
+    - {fileID: 11400000, guid: 3a991e79640bd5846bf6efebeefaaae5, type: 2}
+    - {fileID: 11400000, guid: 6d00ec055d319cc4ca5dd1ceef445646, type: 2}
+    - {fileID: 11400000, guid: a40782a21c722594f83c7d3a69da25bf, type: 2}
+    - {fileID: 11400000, guid: a71464a3910ec974e936d1e210aa8f58, type: 2}
+    - {fileID: 11400000, guid: 2c2670012d4a8ce41be3e36dda9876d0, type: 2}
+    - {fileID: 11400000, guid: 187cc7627510fbd48a82ce0b0bce67c4, type: 2}
+    - {fileID: 11400000, guid: 279e4178aceed4b4f8238bf644ae5d64, type: 2}
+    - {fileID: 11400000, guid: a7022d399b6a0a54785b2b73cda23d08, type: 2}
+    - {fileID: 11400000, guid: df9cb949d7077e84e836a051df698581, type: 2}
+  - connections:
+    - {fileID: 11400000, guid: db01d23fd74cf5a4dbd13eb00a4f3901, type: 2}
+    - {fileID: 11400000, guid: 840c436cdeb639e44a9ce49a0b4bb921, type: 2}
+    - {fileID: 11400000, guid: a32a3a01cfcaa97458cc97fb9a5185a0, type: 2}
+  - connections:
+    - {fileID: 11400000, guid: f9d52b76371130842947bdbd060ae586, type: 2}
+  visualize: 0

@@ -15,11 +15,19 @@ namespace Maps
     public class HighwayElement
     {
       public Node node;
-      public List<HighwayElement> connections = new List<HighwayElement>();
+      public List<HighwayConnection> connections = new List<HighwayConnection>();
       public List<Vector3> normals = new List<Vector3>();
       public Path pathType;
       public float distSincePrev = 0.0F;
+      // TODO: Add multiple lanes and one-ways.
     }
+
+    public class HighwayConnection
+    {
+      public HighwayElement element;
+      public bool traversable = true;
+    }
+    
     [Serializable]
     public class HighwayLayer
     {
@@ -43,9 +51,10 @@ namespace Maps
       foreach (Way way in _ways)
       {
         if (!way.tags.ContainsKey("highway")) continue;
+        bool oneWay = way.tags.ContainsKey("oneway") && way.tags["oneway"] == "yes";
         Path pathGenerator = (Path) MapFeature.GetFeatureGenerator(way);
         if (pathGenerator == null) continue;
-        Vector3 prevPos = way.nodes[0].position;
+        Vector3 prevPos = way.nodes[0].chunkPos;
         for (int i = 0; i < way.nodes.Length; i++)
         {
           foreach (KeyValuePair<HighwayLayer, Dictionary<Node, HighwayElement>> layerPair in layerNetwork)
@@ -58,7 +67,7 @@ namespace Maps
               layerPair.Value[node].pathType = pathGenerator;
               continue;
             }
-            Vector3 pos = node.position + Vector3.up * pathGenerator.yOffset;
+            Vector3 pos = node.chunkPos + Vector3.up * pathGenerator.yOffset;
             layerPair.Value.Add(node, new HighwayElement{node = node, pathType = pathGenerator, distSincePrev = Vector3.Distance(pos, prevPos)});
             prevPos = pos;
           }
@@ -68,16 +77,15 @@ namespace Maps
         {
           if (!layerPair.Key.connections.Contains(pathGenerator)) continue;
           // Update the connections for the first and last nodes
-          layerPair.Value[way.nodes[0]].connections.Add(layerPair.Value[way.nodes[1]]);
-          layerPair.Value[way.nodes[way.nodes.Length-1]].connections.Add(layerPair.Value[way.nodes[way.nodes.Length-2]]);
+          layerPair.Value[way.nodes[0]].connections.Add(new HighwayConnection{element = layerPair.Value[way.nodes[1]]});
+          layerPair.Value[way.nodes[way.nodes.Length-1]].connections.Add(new HighwayConnection{element = layerPair.Value[way.nodes[way.nodes.Length-2]], traversable = !oneWay});
           // Update the connections for the middle nodes
           for (int i = 1; i < way.nodes.Length - 1; i++)
           {
             HighwayElement element = layerPair.Value[way.nodes[i]];
-            element.connections.Add(layerPair.Value[way.nodes[i-1]]);
-            element.connections.Add(layerPair.Value[way.nodes[i+1]]);
+            element.connections.Add(new HighwayConnection{element = layerPair.Value[way.nodes[i-1]], traversable = !oneWay});
+            element.connections.Add(new HighwayConnection{element = layerPair.Value[way.nodes[i+1]]});
           }
-          
         }
       }
       
@@ -88,8 +96,8 @@ namespace Maps
         {
           elementPair.Value.connections.Sort((_a, _b) =>
           {
-            int a = (int) Vector3.SignedAngle(Vector3.forward, _b.node.position - elementPair.Value.node.position, Vector3.up);
-            int b = (int) Vector3.SignedAngle(Vector3.forward, _a.node.position - elementPair.Value.node.position, Vector3.up);
+            int a = (int) Vector3.SignedAngle(Vector3.forward, _b.element.node.chunkPos - elementPair.Value.node.chunkPos, Vector3.up);
+            int b = (int) Vector3.SignedAngle(Vector3.forward, _a.element.node.chunkPos - elementPair.Value.node.chunkPos, Vector3.up);
             if (a < 0) a = 360 + a;
             if (b < 0) b = 360 + b;
             return b - a;
@@ -110,6 +118,7 @@ namespace Maps
         MeshFilter meshFilter = meshRenderer.GetComponent<MeshFilter>();
         meshRenderer.sharedMaterials = pathType.materials;
         meshRenderer.transform.parent = transform;
+        meshRenderer.transform.position = transform.position;
         pathTypes.Add(pathType, new MapFeature.FeatureMeshData());
         pathFilters.Add(pathType, meshFilter);
       }
@@ -119,21 +128,21 @@ namespace Maps
         if (element.pathType == null) continue;
         if (element.connections.Count == 1)
         {
-          Vector3 forward = (element.node.position - element.connections[0].node.position).normalized;
+          Vector3 forward = (element.node.chunkPos - element.connections[0].element.node.chunkPos).normalized;
           float width = element.pathType.width * 0.5F;
-          element.normals.Add(new Vector3(forward.z * width, element.node.position.y + element.pathType.yOffset, -forward.x * width) + element.node.position);
-          element.normals.Add(new Vector3(-forward.z * width, element.node.position.y + element.pathType.yOffset, forward.x * width) + element.node.position);
+          element.normals.Add(new Vector3(forward.z * width, element.pathType.yOffset, -forward.x * width) + element.node.chunkPos);
+          element.normals.Add(new Vector3(-forward.z * width, element.pathType.yOffset, forward.x * width) + element.node.chunkPos);
           continue;
         }
         for (int i = 0; i < element.connections.Count; i++)
         {
-          Vector3 inDir = (element.node.position - element.connections[MapFeature.ClampListIndex(i - 1, element.connections.Count)].node.position).normalized;
-          Vector3 outDir = (element.connections[MapFeature.ClampListIndex(i, element.connections.Count)].node.position - element.node.position).normalized;
+          Vector3 inDir = (element.node.chunkPos - element.connections[MapFeature.ClampListIndex(i - 1, element.connections.Count)].element.node.chunkPos).normalized;
+          Vector3 outDir = (element.connections[MapFeature.ClampListIndex(i, element.connections.Count)].element.node.chunkPos - element.node.chunkPos).normalized;
           Vector3 forward = (inDir + outDir).normalized;
           float inAngle = Vector3.SignedAngle(inDir, forward, Vector3.up);
 
           float width = element.pathType.width * 0.5F * (Mathf.Max(Mathf.Sin(Mathf.Deg2Rad * -inAngle) * 0.66F, 0.0F) + 1.0F);
-          element.normals.Add(new Vector3(-forward.z * width, element.node.position.y + element.pathType.yOffset, forward.x * width) + element.node.position);
+          element.normals.Add(new Vector3(-forward.z * width, element.pathType.yOffset, forward.x * width) + element.node.chunkPos);
         }
       }
       /* Triangulate the mesh, finally! */
@@ -143,16 +152,16 @@ namespace Maps
         MapFeature.FeatureMeshData meshData = pathTypes[element.pathType];
         for (int i = 0; i < element.connections.Count; i++)
         {
-          HighwayElement connection = element.connections[i];
-          Vector3 diff = connection.node.position - element.node.position;
+          HighwayElement connection = element.connections[i].element;
+          Vector3 diff = connection.node.chunkPos - element.node.chunkPos;
           if (diff.x < diff.y) continue; // Only do this in once direction.
           int j = 0;
-          foreach (HighwayElement otherConnection in connection.connections)
+          foreach (HighwayConnection otherConnection in connection.connections)
           {
-            if (otherConnection == element) break;
+            if (otherConnection.element == element) break;
             j++;
           }
-          float dist = Vector3.Distance(element.node.position, connection.node.position);
+          float dist = Vector3.Distance(element.node.chunkPos, connection.node.chunkPos);
           if (element.connections.Count <= 2 && connection.connections.Count <= 2)
           {
             meshData.vertices.AddRange(new []
@@ -174,7 +183,7 @@ namespace Maps
             List<Vector3> nodes = new List<Vector3>();
             nodes.AddRange(new []
             {
-              element.node.position, element.normals[i], connection.normals[MapFeature.ClampListIndex(j+1,connection.normals.Count)], connection.node.position, connection.normals[j], element.normals[MapFeature.ClampListIndex(i+1, element.normals.Count)]
+              element.node.chunkPos, element.normals[i], connection.normals[MapFeature.ClampListIndex(j+1,connection.normals.Count)], connection.node.chunkPos, connection.normals[j], element.normals[MapFeature.ClampListIndex(i+1, element.normals.Count)]
             });
             MapFeature.TriangulateConvex(nodes, meshData);
             meshData.uvs.AddRange(new []
@@ -208,10 +217,10 @@ namespace Maps
       {
         Random.InitState(element.pathType.priority);
         Gizmos.color = Random.ColorHSV(0.0F, 1.0F, 1.0F,1.0F);
-        foreach (HighwayElement connection in element.connections)
+        foreach (HighwayConnection connection in element.connections)
         {
-          Vector3 diff = connection.node.position - element.node.position;
-          if (diff.x > diff.y) Gizmos.DrawLine(element.node.position, connection.node.position);
+          Vector3 diff = connection.element.node.chunkPos - element.node.chunkPos;
+          if (!connection.traversable) Gizmos.DrawLine(element.node.chunkPos, connection.element.node.chunkPos);
         }
       }
     }

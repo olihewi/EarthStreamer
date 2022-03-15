@@ -10,26 +10,26 @@ public class RoadVehicle : MonoBehaviour
     public HighwayNetwork.HighwayElement currentNode;
     public float speed = 3.0F;
     private List<HighwayNetwork.HighwayElement> visitedNodes = new List<HighwayNetwork.HighwayElement>();
-    private int retries = 0;
     void Start()
     {
         currentNode = network.highwayNetwork[0];
         foreach (HighwayNetwork.HighwayElement element in network.highwayNetwork)
         {
-            if (Vector3.Distance(element.node.position,transform.position) < Vector3.Distance(currentNode.node.position,transform.position)) currentNode = element;
+            if (Vector3.Distance(element.node.chunkPos,transform.position) < Vector3.Distance(currentNode.node.chunkPos,transform.position)) currentNode = element;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(currentNode.node.position - transform.position), Time.deltaTime * 2.0F);
-        transform.position = Vector3.MoveTowards(transform.position, currentNode.node.position, speed * Time.deltaTime);
-        if (transform.position == currentNode.node.position)
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(currentNode.node.chunkPos - transform.position), Time.deltaTime * 2.0F);
+        transform.position = Vector3.MoveTowards(transform.position, currentNode.node.chunkPos, speed * Time.deltaTime);
+        if (transform.position == currentNode.node.chunkPos)
         {
             bool found = false;
-            foreach (HighwayNetwork.HighwayElement element in currentNode.connections)
+            foreach (HighwayNetwork.HighwayConnection connection in currentNode.connections)
             {
+                HighwayNetwork.HighwayElement element = connection.element;
                 if (!visitedNodes.Contains(element))
                 {
                     currentNode = element;
@@ -38,7 +38,7 @@ public class RoadVehicle : MonoBehaviour
             }
             if (!found)
             {
-                currentNode = currentNode.connections[MapFeature.ClampListIndex(retries+=3,currentNode.connections.Count)];
+                currentNode = currentNode.connections[0].element;
             }
             visitedNodes.Add(currentNode);
         }

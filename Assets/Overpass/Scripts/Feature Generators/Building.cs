@@ -31,17 +31,24 @@ namespace Maps.Features
       List<Vector3> nodes = new List<Vector3>();
       foreach (Node node in _way.nodes)
       {
-        nodes.Add(node.position);
+        nodes.Add(node.chunkPos);
       }
       if (!IsPolygonClockwise(nodes)) nodes.Reverse();
       FeatureMeshData meshData = new FeatureMeshData();
       meshData.triOffset = _triOffset;
+
+      float averageY = 0.0F;
+      foreach (Vector3 _node in nodes)
+      {
+        averageY += _node.y;
+      }
+      averageY /= nodes.Count;
       
-      ExtrudeWalls(nodes, meshData, buildingMinHeight, buildingHeight);
+      ExtrudeWalls(nodes, meshData, buildingMinHeight, averageY + buildingHeight);
       Vector3 roofPos = Vector3.up * buildingHeight;
       for (int i = 0; i < nodes.Count; i++)
       {
-        nodes[i] += roofPos;
+        nodes[i] = new Vector3(nodes[i].x, averageY + buildingHeight, nodes[i].z);
       }
       TriangulatePolygon(nodes, meshData);
       return meshData;

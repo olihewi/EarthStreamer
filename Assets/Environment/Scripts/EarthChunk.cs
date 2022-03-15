@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class EarthChunk : MonoBehaviour
 {
-    [Range(0,14)] public int zoomLevel;
+    [Range(0,15)] public int zoomLevel;
     public Vector2Int coords;
     private int prevZoom = -1;
     private Vector2Int prevCoords = -Vector2Int.one;
@@ -29,7 +29,7 @@ public class EarthChunk : MonoBehaviour
     {
         if (zoomLevel != prevZoom || coords != prevCoords)
         {
-            zoomLevel = Math.Max(Math.Min(zoomLevel, 14), 0);
+            zoomLevel = Math.Max(Math.Min(zoomLevel, 15), 0);
             coords.x = (int) Mathf.Clamp(coords.x, 0, Mathf.Pow(2.0F, zoomLevel) - 1.0F);
             coords.y = (int) Mathf.Clamp(coords.y, 0, Mathf.Pow(2.0F, zoomLevel) - 1.0F);
             Load();
@@ -52,8 +52,6 @@ public class EarthChunk : MonoBehaviour
         if (www.result != UnityWebRequest.Result.Success) yield break;
         texture = DownloadHandlerTexture.GetContent(www);
 
-        float lowestH = Mathf.Infinity;
-        float highestH = -Mathf.Infinity;
         List<Vector3> vertices = new List<Vector3>();
         List<Vector2> uvs = new List<Vector2>();
         for (int y = 0; y < texture.height; y++)
@@ -62,11 +60,9 @@ public class EarthChunk : MonoBehaviour
             {
                 Color pixel = texture.GetPixel(x, y);
                 float height = ((pixel.r * 65536.0F + pixel.g * 256.0F + pixel.b) - 32768.0F) / 256.0F;
-                if (height > highestH) highestH = height;
-                if (height < lowestH) lowestH = height;
-                vertices.Add(new Vector3((x / (float)texture.width - 0.5F) * 10.0F, height * heightScale * (zoomLevel+1), (y / (float)texture.height - 0.5F) * 10.0F));
+                vertices.Add(new Vector3((x / (float)texture.width - 0.5F) * 10.0F, height * heightScale * (zoomLevel + 1), (y / (float)texture.height - 0.5F) * 10.0F));
                 uvs.Add(new Vector2(x / (float)texture.width, y / (float)texture.width));
-                texture.SetPixel(x,y, new Color(height > seaLevel ? 1.0F : 0.0F,height > seaLevel ? 1.0F : 0.0F,height > seaLevel ? 1.0F : 0.0F,1.0F));
+                texture.SetPixel(x,y, new Color(height,height,height,1.0F));
             }
         }
         int[] triangles = new int[(texture.width - 1) * (texture.height - 1) * 6];

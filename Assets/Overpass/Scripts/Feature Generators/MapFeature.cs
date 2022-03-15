@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Earthdata;
+using Game.Utils.Math;
+using Game.Utils.Triangulation;
 using UnityEngine;
 
 namespace Maps.Features
@@ -98,8 +101,8 @@ namespace Maps.Features
         _meshData.vertices.AddRange(new[]
         {
           _nodes[i] + floorPos,
-          _nodes[i] + roofPos,
-          _nodes[i + 1] + roofPos,
+          new Vector3(_nodes[i].x,_height, _nodes[i].z), 
+          new Vector3(_nodes[i+1].x, _height, _nodes[i+1].z),
           _nodes[i + 1] + floorPos
         });
         _meshData.triangles.AddRange(new[]
@@ -214,6 +217,32 @@ namespace Maps.Features
           vertices[0].prev.index + _meshData.triOffset,
           vertices[0].next.index + _meshData.triOffset,
         });
+    }
+    
+    public static void TriangulateDelaunay(List<Vector3> _nodes, FeatureMeshData _meshData)
+    {
+      List<Vector2> nodes2D = new List<Vector2>();
+      for (int i = 0; i < _nodes.Count; i++)
+      {
+        nodes2D.Add(new Vector2(_nodes[i].x, _nodes[i].z));
+      }
+      DelaunayTriangulation triangulation = new DelaunayTriangulation();
+      triangulation.Triangulate(nodes2D, 0.025F);
+      List<Triangle2D> triangles = new List<Triangle2D>();
+      triangulation.GetTrianglesDiscardingHoles(triangles);
+
+      for (int i = 0; i < triangles.Count; i++)
+      {
+        Vector3 p0 = new Vector3(triangles[i].p0.x, ElevationStreamer.GetHeightAt(triangles[i].p0 / 111319.444F + new Vector2(-2.549459F, 51.50099F)), triangles[i].p0.y);
+        Vector3 p1 = new Vector3(triangles[i].p1.x, ElevationStreamer.GetHeightAt(triangles[i].p1 / 111319.444F + new Vector2(-2.549459F, 51.50099F)), triangles[i].p1.y);
+        Vector3 p2 = new Vector3(triangles[i].p2.x, ElevationStreamer.GetHeightAt(triangles[i].p2 / 111319.444F + new Vector2(-2.549459F, 51.50099F)), triangles[i].p2.y);
+        _meshData.vertices.Add(p0);
+        _meshData.vertices.Add(p1);
+        _meshData.vertices.Add(p2);
+        _meshData.triangles.Add(_meshData.triOffset + i * 3 + 2);
+        _meshData.triangles.Add(_meshData.triOffset + i * 3 + 1);
+        _meshData.triangles.Add(_meshData.triOffset + i * 3);
+      }
     }
 
     protected static bool IsTriangleClockwise(Vector3 _a, Vector3 _b, Vector3 _c)

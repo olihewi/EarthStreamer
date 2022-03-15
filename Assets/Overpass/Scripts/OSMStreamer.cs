@@ -1,164 +1,68 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Maps.Features;
-using Unity.Jobs;
-using UnityEditor;
+using Maps;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace Maps
 {
   public class OSMStreamer : MonoBehaviour
   {
-    [Header("Overpass API Query")]
-    public string filePath;
-    public Rect boundingBox;
+    public Vector2 startLatLong;
+    public OSMChunk chunkPrefab;
+    [Header("Chunks")]
+    public float chunkSize = 0.025F;
+    [SerializeField] private Transform target;
+    public float LODStep = 1.5F;
+    public int maxLOD;
+    private static Dictionary<Vector2Int, OSMChunk> chunks = new Dictionary<Vector2Int, OSMChunk>();
 
-    [Header("Mesh Generation")] public HighwayNetwork highwayNetwork;
-
-    public Node[] nodes;
-    public Way[] ways;
-    public Relation[] relations;
-
-    private void Awake()
+    private void Update()
     {
-      Generate();
-    }
-
-    [ContextMenu("Generate")]
-    public async void Generate()
-    {
-      double time = EditorApplication.timeSinceStartup;
-      MapFeature.RegisterFeatureGenerators();
-      await Task.Run(GenerateData);
-      Dictionary<MapFeature, MapFeature.FeatureMeshData> featureTypes = new Dictionary<MapFeature, MapFeature.FeatureMeshData>();
-      await Task.Run(() => GenerateMeshes(featureTypes));
-      // Clear children
-      while (transform.childCount != 0)
+      Vector2 playerLatLong = new Vector2(target.position.x, target.position.z) / 111319.444F + startLatLong;
+      Vector2Int playerChunk = Vector2Int.RoundToInt(playerLatLong / chunkSize);
+      int range = Mathf.FloorToInt((maxLOD+1) * LODStep);
+      for (int x = playerChunk.x - range; x < playerChunk.x + range; x++)
       {
-        DestroyImmediate(transform.GetChild(0).gameObject);
+        for (int y = playerChunk.y - range; y < playerChunk.y + range; y++)
+        {
+          Vector2Int thisChunkPos = new Vector2Int(x,y);
+          float dist = (thisChunkPos - playerLatLong / chunkSize).magnitude;
+          if (dist > range) continue;
+          if (!chunks.ContainsKey(thisChunkPos))
+          {
+            Vector2 thisLatLong = new Vector2(thisChunkPos.x,thisChunkPos.y) * chunkSize;
+            Vector2 thisWorldPos = (thisLatLong - startLatLong) * 111319.444F;
+            Vector3 position = new Vector3(thisWorldPos.x,0.0F,thisWorldPos.y);
+            OSMChunk elevationChunk = Instantiate(chunkPrefab, position, Quaternion.identity, transform);
+            elevationChunk.boundingBox = new Rect(thisLatLong - Vector2.one * (chunkSize * 0.5F), Vector2.one * chunkSize);
+            elevationChunk.currentLOD = -1;
+            elevationChunk.filePath = $"{Application.streamingAssetsPath}/OSM/{elevationChunk.boundingBox.xMin}-{elevationChunk.boundingBox.xMax}-{elevationChunk.boundingBox.yMin}-{elevationChunk.boundingBox.yMax}.xml";
+            chunks.Add(thisChunkPos, elevationChunk);
+          }
+          OSMChunk thisChunk = chunks[thisChunkPos];
+          //dist = Mathf.Sqrt(dist);
+          int thisLOD = Mathf.FloorToInt(dist / LODStep);
+          thisChunk.UpdateLOD(thisLOD);
+        }
       }
-      // Create a new mesh GameObject for each feature generator type
-      foreach (KeyValuePair<MapFeature, MapFeature.FeatureMeshData> featurePair in featureTypes)
-      {
-        // TODO: See if using prefabs for this is more efficient.
-        MeshFilter meshFilter = new GameObject(featurePair.Key.name,new [] {typeof(MeshFilter), typeof(MeshRenderer)}).GetComponent<MeshFilter>();
-        MeshRenderer meshRenderer = meshFilter.GetComponent<MeshRenderer>();
-        meshRenderer.sharedMaterials = featurePair.Key.materials;
-        meshFilter.transform.parent = transform;
-        // Create the new mesh
-        Mesh mesh = new Mesh();
-        mesh.indexFormat = IndexFormat.UInt32;
-        mesh.vertices = featurePair.Value.vertices.ToArray();
-        mesh.triangles = featurePair.Value.triangles.ToArray();
-        mesh.uv = featurePair.Value.uvs.ToArray();
-        mesh.RecalculateNormals();
-        meshFilter.sharedMesh = mesh;
-      }
-      // TODO: Make this async too
-      highwayNetwork.GenerateMeshes();
-      Debug.Log($"{gameObject.name}: Generated in {EditorApplication.timeSinceStartup - time:F}s");
-    }
-
-    public void GenerateData()
-    {
-      XElement response = XDocument.Load(filePath).Element("osm");
-      Vector2 centrePoint = new Vector2(boundingBox.x + boundingBox.width / 2.0F, boundingBox.y - boundingBox.height / 2.0F);
-      // Nodes
-      Dictionary<long, Node> nodeDict = new Dictionary<long, Node>();
-      foreach (XElement nodeElement in response.Elements("node"))
-      {
-        Node node = new Node(nodeElement, centrePoint);
-        if (!nodeDict.ContainsKey(node.id)) nodeDict.Add(node.id, node);
-      }
-      // Ways
-      Dictionary<long, Way> wayDict = new Dictionary<long, Way>();
-      foreach (XElement wayElement in response.Elements("way"))
-      {
-        Way way = new Way(wayElement, nodeDict);
-        if (!wayDict.ContainsKey(way.id)) wayDict.Add(way.id, way);
-      }
-      // Relations
-      List<Relation> relationList = new List<Relation>();
-      foreach (XElement relationElement in response.Elements("relation"))
-      {
-        relationList.Add(new Relation(relationElement, nodeDict, wayDict));
-      }
-      // To Arrays
-      int i = 0;
-      nodes = new Node[nodeDict.Count];
-      foreach (KeyValuePair<long, Node> nodePair in nodeDict)
-      {
-        nodes[i++] = nodePair.Value;
-      }
-      i = 0;
-      ways = new Way[wayDict.Count];
-      foreach (KeyValuePair<long, Way> wayPair in wayDict)
-      {
-        ways[i++] = wayPair.Value;
-      }
-      relations = relationList.ToArray();
-      
-      highwayNetwork.GenerateNetwork(ways);
+      ClearChunks();
     }
     
-    public void GenerateMeshes(Dictionary<MapFeature, MapFeature.FeatureMeshData> featureTypes)
+    private void ClearChunks()
     {
-      foreach (Way way in ways)
+      Vector2 playerLatLong = new Vector2(target.position.x, target.position.z) / 111319.444F + startLatLong;
+      List<Vector2Int> toRemove = new List<Vector2Int>();
+      foreach (KeyValuePair<Vector2Int, OSMChunk> chunkPair in chunks)
       {
-        MapFeature generator = MapFeature.GetFeatureGenerator(way);
-        if (generator == null || generator.elementType != MapFeature.MapElement.Way) continue;
-        if (!featureTypes.ContainsKey(generator)) featureTypes.Add(generator, new MapFeature.FeatureMeshData());
-        MapFeature.FeatureMeshData meshData = featureTypes[generator];
-        MapFeature.FeatureMeshData newData = generator.GetMesh(way, meshData.triOffset);
-        meshData.vertices.AddRange(newData.vertices);
-        meshData.triangles.AddRange(newData.triangles);
-        meshData.uvs.AddRange(newData.uvs);
-        meshData.triOffset = meshData.vertices.Count;
+        if ((chunkPair.Value.boundingBox.center - playerLatLong).sqrMagnitude > Mathf.Pow((maxLOD + 1) * LODStep,2)) toRemove.Add(chunkPair.Key);
       }
-      foreach (Node node in nodes)
+      foreach (Vector2Int remove in toRemove)
       {
-        MapFeature generator = MapFeature.GetFeatureGenerator(node);
-        if (generator == null || generator.elementType != MapFeature.MapElement.Node) continue;
-        if (!featureTypes.ContainsKey(generator)) featureTypes.Add(generator, new MapFeature.FeatureMeshData());
-        MapFeature.FeatureMeshData meshData = featureTypes[generator];
-        MapFeature.FeatureMeshData newData = generator.GetMesh(node, meshData.triOffset);
-        meshData.vertices.AddRange(newData.vertices);
-        meshData.triangles.AddRange(newData.triangles);
-        meshData.uvs.AddRange(newData.uvs);
-        meshData.triOffset = meshData.vertices.Count;
+        Destroy(chunks[remove].gameObject);
+        chunks.Remove(remove);
       }
-      foreach (Relation relation in relations)
-      {
-        MapFeature generator = MapFeature.GetFeatureGenerator(relation);
-        if (generator == null || generator.elementType != MapFeature.MapElement.Relation) continue;
-        if (!featureTypes.ContainsKey(generator)) featureTypes.Add(generator, new MapFeature.FeatureMeshData());
-        MapFeature.FeatureMeshData meshData = featureTypes[generator];
-        MapFeature.FeatureMeshData newData = generator.GetMesh(relation, meshData.triOffset);
-        meshData.vertices.AddRange(newData.vertices);
-        meshData.triangles.AddRange(newData.triangles);
-        meshData.uvs.AddRange(newData.uvs);
-        meshData.triOffset = meshData.vertices.Count;
-      }
-    }
-
-    [ContextMenu("Request New Data from Overpass")]
-    public async void RequestNewData()
-    {
-      HttpWebRequest request = WebRequest.CreateHttp($"http://overpass-api.de/api/interpreter?data=[out:xml];(node({boundingBox.y - boundingBox.height},{boundingBox.x},{boundingBox.y},{boundingBox.x + boundingBox.width});way({boundingBox.y - boundingBox.height},{boundingBox.x},{boundingBox.y},{boundingBox.x + boundingBox.width});relation({boundingBox.y - boundingBox.height},{boundingBox.x},{boundingBox.y},{boundingBox.x + boundingBox.width}););out body;>;out skel qt;");
-      request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-      Debug.Log($"{gameObject.name}: Requesting data from Overpass API...");
-      HttpWebResponse response = (HttpWebResponse) await request.GetResponseAsync();
-      Debug.Log($"{gameObject.name}: Received data from Overpass!");
-      Stream stream = response.GetResponseStream();
-      StreamReader reader = new StreamReader(stream);
-      XDocument doc = XDocument.Parse(await reader.ReadToEndAsync());
-      doc.Save(filePath);
-      Debug.Log($"{gameObject.name}: Successfully saved new data to {filePath}");
     }
   }
 }
+

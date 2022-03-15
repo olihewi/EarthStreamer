@@ -16,11 +16,12 @@ namespace Maps.Features
       List<Vector3> nodes = new List<Vector3>();
       foreach (Node node in _way.nodes)
       {
-        nodes.Add(node.position + offset);
+        nodes.Add(node.chunkPos + offset);
       }
       FeatureMeshData meshData = new FeatureMeshData();
       meshData.triOffset = _triOffset;
-      TriangulatePolygon(nodes, meshData);
+      //TriangulatePolygon(nodes, meshData);
+      TriangulateDelaunay(nodes, meshData);
       return meshData;
     }
 

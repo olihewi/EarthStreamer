@@ -15,7 +15,7 @@ namespace Maps.Features
 
     public override FeatureMeshData GetMesh(Node _node, int _triOffset)
     {
-      Instantiate(prefab, _node.position, Quaternion.identity);
+      Instantiate(prefab, _node.chunkPos, Quaternion.identity);
       return new FeatureMeshData();
     }
 

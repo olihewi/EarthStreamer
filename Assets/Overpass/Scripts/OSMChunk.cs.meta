@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 708a1858bdf92af488080c093869df51
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - highwayNetwork: {instanceID: 0}
+  - newMeshPrefab: {fileID: 7131880663524246733, guid: 3586258ee0b932d428a1adff42fd7457, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Earthdata;
 using UnityEngine;
 
 namespace Maps
@@ -20,7 +21,8 @@ namespace Maps
     {
       id = long.Parse(_element.FirstAttribute.Value);
       // TODO: Take into account elevation data.
-      position = new Vector3((float.Parse(_element.Attribute("lon").Value) - _origin.x) * 111319.444F, 0.0F /* TODO: Heightmap */, (float.Parse(_element.Attribute("lat").Value) - _origin.y) * 111319.444F);
+      Vector2 latLong = new Vector2(float.Parse(_element.Attribute("lon").Value), float.Parse(_element.Attribute("lat").Value));
+      chunkPos = new Vector3((latLong.x - _origin.x) * 111319.444F, ElevationStreamer.GetHeightAt(latLong), (latLong.y - _origin.y) * 111319.444F);
       tags = new Dictionary<string, string>();
       foreach (XElement tag in _element.Elements("tag"))
       {
@@ -30,7 +32,7 @@ namespace Maps
       }
     }
     public long id;
-    public Vector3 position;
+    public Vector3 chunkPos;
   }
   // Ways are a line, such as a road, walls or area.
   // See: https://wiki.openstreetmap.org/wiki/Way
