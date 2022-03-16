@@ -10,6 +10,7 @@ using Unity.Jobs;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Random = UnityEngine.Random;
 
 namespace Maps
 {
@@ -66,11 +67,19 @@ namespace Maps
         MeshFilter meshFilter = Instantiate(newMeshPrefab, transform.position, Quaternion.identity, transform);
         meshFilter.gameObject.name = featurePair.Key.name;
         MeshRenderer meshRenderer = meshFilter.GetComponent<MeshRenderer>();
+        MeshCollider meshCollider = meshFilter.GetComponent<MeshCollider>();
         meshRenderer.sharedMaterials = featurePair.Key.materials;
         // Create the new mesh
         Mesh mesh = new Mesh {indexFormat = IndexFormat.UInt32, vertices = featurePair.Value.vertices.ToArray(), triangles = featurePair.Value.triangles.ToArray(), uv = featurePair.Value.uvs.ToArray()};
         mesh.RecalculateNormals();
         meshFilter.sharedMesh = mesh;
+        meshCollider.sharedMesh = mesh;
+        foreach (KeyValuePair<GameObject, Vector3> prefab in featurePair.Value.prefabsToInstantiate)
+        {
+          GameObject go = Instantiate(prefab.Key, meshFilter.transform);
+          go.transform.localPosition = prefab.Value;
+          go.transform.rotation = Quaternion.Euler(0.0F, Random.Range(0.0F,360.0F), 0.0F);
+        }
       }
       // TODO: Make this async too
       highwayNetwork.GenerateNetwork(ways);
@@ -158,6 +167,7 @@ namespace Maps
         meshData.triangles.AddRange(newData.triangles);
         meshData.uvs.AddRange(newData.uvs);
         meshData.triOffset = meshData.vertices.Count;
+        meshData.prefabsToInstantiate.AddRange(newData.prefabsToInstantiate);
       }
       foreach (Relation relation in relations)
       {

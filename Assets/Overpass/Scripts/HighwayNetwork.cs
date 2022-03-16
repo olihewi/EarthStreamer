@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using Maps.Features;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 namespace Maps
@@ -119,6 +120,7 @@ namespace Maps
         meshRenderer.sharedMaterials = pathType.materials;
         meshRenderer.transform.parent = transform;
         meshRenderer.transform.position = transform.position;
+        meshRenderer.shadowCastingMode = ShadowCastingMode.Off;
         pathTypes.Add(pathType, new MapFeature.FeatureMeshData());
         pathFilters.Add(pathType, meshFilter);
       }
@@ -199,6 +201,10 @@ namespace Maps
       foreach (KeyValuePair<Path, MeshFilter> filterPair in pathFilters)
       {
         MapFeature.FeatureMeshData meshData = pathTypes[filterPair.Key];
+        for (int i = 0; i < meshData.vertices.Count; i++)
+        {
+          meshData.vertices[i] += Vector3.up;
+        }
         Mesh mesh = new Mesh();
         mesh.vertices = meshData.vertices.ToArray();
         mesh.triangles = meshData.triangles.ToArray();

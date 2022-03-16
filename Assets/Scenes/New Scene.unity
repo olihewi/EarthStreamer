@@ -178,11 +178,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2628249183068749444, guid: fa02b79a4e95c194b9d80776a9495168, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.821
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628249183068749444, guid: fa02b79a4e95c194b9d80776a9495168, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.469
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628249183068749444, guid: fa02b79a4e95c194b9d80776a9495168, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628291362328005702, guid: fa02b79a4e95c194b9d80776a9495168, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.821
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628291362328005702, guid: fa02b79a4e95c194b9d80776a9495168, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.469
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628291362328005702, guid: fa02b79a4e95c194b9d80776a9495168, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729728415314204022, guid: fa02b79a4e95c194b9d80776a9495168, type: 3}
+      propertyPath: propellor
+      value: 
+      objectReference: {fileID: 290613448}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa02b79a4e95c194b9d80776a9495168, type: 3}
 --- !u!4 &173220331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2623322115465506066, guid: fa02b79a4e95c194b9d80776a9495168, type: 3}
+  m_PrefabInstance: {fileID: 173220330}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &290613448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4122728739005454357, guid: fa02b79a4e95c194b9d80776a9495168, type: 3}
   m_PrefabInstance: {fileID: 173220330}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &705150327 stripped
@@ -411,5 +444,5 @@ MonoBehaviour:
   chunkPrefab: {fileID: 316995142228495741, guid: 4de218b764b64574ca8845a81ee7c43b, type: 3}
   chunkSize: 0.025
   target: {fileID: 173220331}
-  LODStep: 1.5
+  LODStep: 1.75
   maxLOD: 0

@@ -15,8 +15,9 @@ namespace Maps.Features
 
     public override FeatureMeshData GetMesh(Node _node, int _triOffset)
     {
-      Instantiate(prefab, _node.chunkPos, Quaternion.identity);
-      return new FeatureMeshData();
+      List<KeyValuePair<GameObject, Vector3>> prefabsToInstantiate = new List<KeyValuePair<GameObject, Vector3>>();
+      prefabsToInstantiate.Add(new KeyValuePair<GameObject, Vector3>(prefab, _node.chunkPos));
+      return new FeatureMeshData{prefabsToInstantiate = prefabsToInstantiate};
     }
 
     public override FeatureMeshData GetMesh(Relation _relation, int _triOffset)

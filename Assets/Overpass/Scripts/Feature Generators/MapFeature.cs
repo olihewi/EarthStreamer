@@ -44,6 +44,7 @@ namespace Maps.Features
       public List<int> triangles = new List<int>();
       public List<Vector2> uvs = new List<Vector2>();
       public int triOffset = 0;
+      public List<KeyValuePair<GameObject, Vector3>> prefabsToInstantiate = new List<KeyValuePair<GameObject, Vector3>>();
     }
 
     public class TriangleVertexData
