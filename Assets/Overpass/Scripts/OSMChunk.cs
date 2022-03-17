@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -84,6 +85,7 @@ namespace Maps
       // TODO: Make this async too
       highwayNetwork.GenerateNetwork(ways);
       highwayNetwork.GenerateMeshes();
+      StartCoroutine(PopIn(1.0F));
     }
 
     private async Task<XDocument> GetOrRequestData()
@@ -181,6 +183,20 @@ namespace Maps
         meshData.uvs.AddRange(newData.uvs);
         meshData.triOffset = meshData.vertices.Count;
       }
+    }
+
+    private IEnumerator PopIn(float _time)
+    {
+      Vector3 end = new Vector3(transform.position.x,0.0F,transform.position.z);
+      Vector3 start = transform.position + Vector3.down * 10.0F;
+      float t = 0.0F;
+      while (t < 1.0F)
+      {
+        transform.position = Vector3.Lerp(start, end, t);
+        t += Time.deltaTime / _time;
+        yield return null;
+      }
+      transform.position = end;
     }
 
     [ContextMenu("Request New Data from Overpass")]

@@ -15,6 +15,7 @@ public class ElevationChunk : MonoBehaviour
   [SerializeField] private MeshFilter meshFilter;
   [SerializeField] private MeshCollider meshCollider;
   [SerializeField] private MeshRenderer meshRenderer;
+  private Texture2D texture;
 
   public void UpdateLOD(int _newLOD)
   {
@@ -30,6 +31,7 @@ public class ElevationChunk : MonoBehaviour
     int w = Mathf.FloorToInt(1.0F / step * elevationRect.width * 3601.0F);
     int h = Mathf.FloorToInt(1.0F / step * elevationRect.height * 3601.0F);
     Vector3[] vertices = new Vector3[w * h];
+    Vector2[] uvs = new Vector2[w * h];
     for (int y = 0; y < h; y++)
     {
       for (int x = 0; x < w; x++)
@@ -39,6 +41,7 @@ public class ElevationChunk : MonoBehaviour
         vertex.x *= 111319.444F;
         vertex.z *= 111319.444F;
         vertices[x + y * w] = vertex;
+        uvs[x + y * w] = new Vector2(x / (float)w, y / (float)h);
       }
     }
     int[] triangles = new int[(w - 1) * (h - 1) * 6];
@@ -52,10 +55,25 @@ public class ElevationChunk : MonoBehaviour
         triangles[ti + 5] = vi + w + 1;
       }
     }
-    Mesh mesh = new Mesh{vertices = vertices, triangles = triangles};
+    Mesh mesh = new Mesh{vertices = vertices, triangles = triangles, uv = uvs};
     mesh.RecalculateNormals();
     meshFilter.sharedMesh = mesh;
     meshCollider.sharedMesh = mesh;
+    GenerateTexture();
     //meshRenderer.material.color = Color.white * (0.8F - currentLOD/ 16.0F);
+  }
+
+  private void GenerateTexture()
+  {
+    Texture2D texture = new Texture2D(128,128);
+    meshRenderer.material.mainTexture = texture;
+    for (int y = 0; y < texture.height; y++)
+    {
+      for (int x = 0; x < texture.width; x++)
+      {
+        texture.SetPixel(x,y,new Color(x / (float)texture.width,y / (float)texture.height,1.0F,1.0F));
+      }
+    }
+    texture.Apply();
   }
 }

@@ -14,10 +14,6 @@ namespace Earthdata
   public class EarthdataStreamer : MonoBehaviour
   {
     public static EarthdataStreamer INSTANCE;
-    [Header("Earthdata Login Credentials")]
-    public string username;
-    [HideInInspector] public string password;
-
     private void Awake()
     {
       if (INSTANCE != null && INSTANCE != this) DestroyImmediate(this);
@@ -28,7 +24,7 @@ namespace Earthdata
     {
       CookieContainer cookieContainer = new CookieContainer();
       CredentialCache credentials = new CredentialCache();
-      credentials.Add(new Uri("https://urs.earthdata.nasa.gov"), "Basic", new NetworkCredential(username,password));
+      credentials.Add(new Uri("https://urs.earthdata.nasa.gov"), "Basic", new NetworkCredential(PlayerPrefs.GetString("earthdata_username"),PlayerPrefs.GetString("earthdata_password")));
       HttpWebRequest request = WebRequest.CreateHttp(_resource);
       request.Method = WebRequestMethods.Http.Get;
       request.Credentials = credentials;

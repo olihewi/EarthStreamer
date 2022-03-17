@@ -24,6 +24,7 @@ namespace Earthdata
     public int maxLOD;
     private static Dictionary<Vector2Int, short[]> heightData = new Dictionary<Vector2Int, short[]>();
     private static Dictionary<Vector2Int, ElevationChunk> chunks = new Dictionary<Vector2Int, ElevationChunk>();
+    private static List<Vector2Int> loadingChunks = new List<Vector2Int>();
 
     private void Awake()
     {
@@ -112,15 +113,21 @@ namespace Earthdata
 
     public static bool IsElevationReady(Vector2 _latLong)
     {
-      bool ready = heightData.ContainsKey(Vector2Int.FloorToInt(_latLong));
-      if (!ready) LoadElevation(Vector2Int.FloorToInt(_latLong));
-      return ready;
+      Vector2Int key = Vector2Int.FloorToInt(_latLong);
+      bool ready = heightData.ContainsKey(key);
+      bool loading = loadingChunks.Contains(key);
+      if (!ready && !loading)
+      {
+        loadingChunks.Add(key);
+        Task.Run(() => LoadElevation(Vector2Int.FloorToInt(_latLong)));
+      }
+      return ready && !loading;
     }
 
     [ContextMenu("Download Elevation")]
     private void DownloadElevation()
     {
-      LoadElevation(Vector2Int.FloorToInt(startLatLong));
+      Task.Run(() => LoadElevation(Vector2Int.FloorToInt(startLatLong)));
     }
 
     private static async void LoadElevation(Vector2Int _latLong)
@@ -146,6 +153,7 @@ namespace Earthdata
         byte firstByte = reader.ReadByte();
         heightData[_latLong][i] = BitConverter.ToInt16(new[] {reader.ReadByte(), firstByte}, 0);
       }
+      loadingChunks.Remove(_latLong);
     }
   }
 }
