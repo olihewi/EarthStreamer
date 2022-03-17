@@ -29,11 +29,11 @@ namespace Earthdata
     {
       if (INSTANCE != null && INSTANCE != this) DestroyImmediate(this);
       else INSTANCE = this;
-      LoadElevation(Vector2Int.FloorToInt(startLatLong));
     }
 
     private void Start()
     {
+      LoadElevation(Vector2Int.FloorToInt(startLatLong));
       target.position = new Vector3(target.position.x, GetHeightAt(startLatLong) + 100.0F, target.position.z);
     }
 
