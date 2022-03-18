@@ -66,6 +66,7 @@ namespace Environment
       if (Input.GetKeyDown(KeyCode.Space))
         Resources.UnloadUnusedAssets();
     }
+    #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
       if (mainCamera == null) return;
@@ -103,5 +104,6 @@ namespace Environment
       _go.transform.parent = ((GameObject) chunk.prefabObject).transform;
       chunk.ClosePrefab();
     }
+    #endif
   }
 }

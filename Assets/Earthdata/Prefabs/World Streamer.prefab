@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21468c04ff63b42408be8e9e1ba69b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  username: olihewi
-  password: 0liChristie!Earthdata
+  username: 
+  password: 
 --- !u!114 &4474498320766409029
 MonoBehaviour:
   m_ObjectHideFlags: 0

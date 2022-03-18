@@ -55,7 +55,6 @@ namespace Maps
     [ContextMenu("Generate")]
     public async void Generate()
     {
-      double time = EditorApplication.timeSinceStartup;
       XDocument document = await Task.Run(GetOrRequestData);
       MapFeature.RegisterFeatureGenerators();
       await Task.Run(() => GenerateData(document));

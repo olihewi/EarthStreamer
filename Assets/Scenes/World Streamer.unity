@@ -223,6 +223,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4474498322076009491, guid: 8af66fe895329be4680fd0299fb3aa61, type: 3}
   m_PrefabInstance: {fileID: 1594719988}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1430306546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4474498320766409051, guid: 8af66fe895329be4680fd0299fb3aa61, type: 3}
+  m_PrefabInstance: {fileID: 1594719988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1430306548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430306546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7700cd3a6b10940a929b151a11bc7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxZoomLevel: 15
+  tilesetName: mapbox.satellite
 --- !u!1001 &1594719988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -321,7 +340,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4474498320766409029, guid: 8af66fe895329be4680fd0299fb3aa61, type: 3}
   m_PrefabInstance: {fileID: 1594719988}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1430306546}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20219d501e908134cab8ea1c86cc4394, type: 3}
@@ -332,7 +351,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4474498320766409028, guid: 8af66fe895329be4680fd0299fb3aa61, type: 3}
   m_PrefabInstance: {fileID: 1594719988}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1430306546}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21468c04ff63b42408be8e9e1ba69b8f, type: 3}

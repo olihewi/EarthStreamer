@@ -36,7 +36,7 @@ public class ElevationChunk : MonoBehaviour
     {
       for (int x = 0; x < w; x++)
       {
-        Vector2 latLong = new Vector2(x / (float) (w-1) * elevationRect.width * 1.005F, y / (float) (h-1) * elevationRect.height * 1.005F);
+        Vector2 latLong = new Vector2(x / (float) (w-1) * elevationRect.width * 1.005F, y / (float) (h-1) * elevationRect.height);
         Vector3 vertex = new Vector3(latLong.x - elevationRect.width / 2.0F, ElevationStreamer.GetHeightAt(latLong + elevationRect.min), latLong.y - elevationRect.height / 2.0F);
         vertex.x *= 111319.444F;
         vertex.z *= 111319.444F;
@@ -63,17 +63,25 @@ public class ElevationChunk : MonoBehaviour
     //meshRenderer.material.color = Color.white * (0.8F - currentLOD/ 16.0F);
   }
 
-  private void GenerateTexture()
+  private async void GenerateTexture()
   {
-    Texture2D texture = new Texture2D(128,128);
-    meshRenderer.material.mainTexture = texture;
-    for (int y = 0; y < texture.height; y++)
+    int textureSize = (int) Math.Pow(2, 9 - currentLOD);
+    Texture2D texture = new Texture2D(textureSize,textureSize);
+    await SatelliteStreamer.ReadyResources(elevationRect, currentLOD);
+    Color[] colors = new Color[textureSize * textureSize];
+    await Task.Run(() =>
     {
-      for (int x = 0; x < texture.width; x++)
+      for (int y = 0; y < textureSize; y++)
       {
-        texture.SetPixel(x,y,new Color(x / (float)texture.width,y / (float)texture.height,1.0F,1.0F));
+        for (int x = 0; x < textureSize; x++)
+        {
+          colors[x+y*textureSize] = SatelliteStreamer.GetColourAt(elevationRect.min + elevationRect.size * new Vector2(x / (float)textureSize, y / (float)textureSize),currentLOD);
+          //colors[x+y*textureSize] = new Color(x / (float)textureSize,y / (float)textureSize,1.0F,1.0F);
+        }
       }
-    }
+    });
+    texture.SetPixels(colors);
     texture.Apply();
+    meshRenderer.material.mainTexture = texture;
   }
 }
