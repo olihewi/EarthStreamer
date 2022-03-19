@@ -82,7 +82,7 @@ namespace MFlight.Demo
             pitch = (pitchOverride) ? keyboardPitch : autoPitch;
             roll = (rollOverride) ? keyboardRoll : autoRoll;
             
-            propellor.Rotate(propellor.right, rigid.velocity.magnitude * Time.deltaTime * Mathf.PI * 4.0F, Space.World);
+            propellor.Rotate(propellor.forward, rigid.velocity.magnitude * Time.deltaTime * Mathf.PI * 8.0F, Space.World);
         }
 
         private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)

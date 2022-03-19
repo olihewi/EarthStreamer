@@ -119,7 +119,7 @@ namespace Earthdata
       if (!ready && !loading)
       {
         loadingChunks.Add(key);
-        Task.Run(() => LoadElevation(Vector2Int.FloorToInt(_latLong)));
+        Task.Run(() => LoadElevation(key));
       }
       return ready && !loading;
     }
