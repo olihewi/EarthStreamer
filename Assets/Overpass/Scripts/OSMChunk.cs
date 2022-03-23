@@ -41,7 +41,6 @@ namespace Maps
       if (currentLOD == _newLOD || !ElevationStreamer.IsElevationReady(boundingBox.min) || !ElevationStreamer.IsElevationReady(boundingBox.max) ) return;
       currentLOD = _newLOD;
       if (currentLOD == 0) Generate();
-      else ClearMesh();
     }
 
     public void ClearMesh()

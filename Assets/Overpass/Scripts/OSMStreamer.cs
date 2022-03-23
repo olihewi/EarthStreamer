@@ -55,7 +55,7 @@ namespace Maps
       List<Vector2Int> toRemove = new List<Vector2Int>();
       foreach (KeyValuePair<Vector2Int, OSMChunk> chunkPair in chunks)
       {
-        if ((chunkPair.Value.boundingBox.center - playerLatLong).sqrMagnitude > Mathf.Pow((maxLOD + 1) * LODStep,2)) toRemove.Add(chunkPair.Key);
+        if ((chunkPair.Value.boundingBox.center - playerLatLong).sqrMagnitude > Mathf.Pow((maxLOD + 2) * LODStep * chunkSize,2)) toRemove.Add(chunkPair.Key);
       }
       foreach (Vector2Int remove in toRemove)
       {
