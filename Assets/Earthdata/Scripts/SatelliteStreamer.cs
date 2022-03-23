@@ -14,6 +14,7 @@ namespace Earthdata
     {
       public Color[] colors;
       public Vector2Int size;
+      public int refCount = 0;
 
       public Color GetPixel(Vector2 _uv)
       {
@@ -68,7 +69,6 @@ namespace Earthdata
       List<Task> tasks = new List<Task>();
       for (int x = ul.x; x <= br.x; x++)
       {
-        // might be the other way round
         for (int y = br.y; y <= ul.y; y++)
         {
           Vector3Int xyz = new Vector3Int(x,y,zoom);
@@ -83,7 +83,29 @@ namespace Earthdata
         }
       }
       await Task.WhenAll(tasks);
-      if (!textures.ContainsKey(Vector3Int.zero)) await Task.Delay(100);
+      for (int x = ul.x; x <= br.x; x++)
+      {
+        for (int y = br.y; y <= ul.y; y++)
+        {
+          Vector3Int xyz = new Vector3Int(x, y, zoom);
+          textures[xyz].refCount++;
+        }
+      }
+    }
+
+    public static void UnloadResources(Rect _latLong, int _lod)
+    {
+      int zoom = INSTANCE.maxZoomLevel - _lod;
+      Vector3Int ul = LatLongToTileID(_latLong.min, zoom);
+      Vector3Int br = LatLongToTileID(_latLong.max, zoom);
+      for (int x = ul.x; x <= br.x; x++)
+      {
+        for (int y = br.y; y <= ul.y; y++)
+        {
+          Vector3Int xyz = new Vector3Int(x, y, zoom);
+          if (--textures[xyz].refCount <= 0) textures.Remove(xyz);
+        }
+      }
     }
     public static Color GetColourAt(Vector2 _latLong, int _lod)
     {
