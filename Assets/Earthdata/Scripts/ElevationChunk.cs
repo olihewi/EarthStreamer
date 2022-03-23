@@ -19,7 +19,7 @@ public class ElevationChunk : MonoBehaviour
 
   public void UpdateLOD(int _newLOD)
   {
-    if (currentLOD == _newLOD || !ElevationStreamer.IsElevationReady(elevationRect.min) || !ElevationStreamer.IsElevationReady(elevationRect.max) ) return;
+    if (currentLOD == _newLOD ) return;
     if (currentLOD >= 0) SatelliteStreamer.UnloadResources(elevationRect, currentLOD);
     currentLOD = _newLOD;
     if (currentLOD >= 0) GenerateMesh();
