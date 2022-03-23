@@ -36,7 +36,7 @@ public class ElevationChunk : MonoBehaviour
     {
       for (int x = 0; x < w; x++)
       {
-        Vector2 latLong = new Vector2(x / (float) (w-1) * elevationRect.width * 1.005F, y / (float) (h-1) * elevationRect.height);
+        Vector2 latLong = new Vector2(x / (float) (w-1) * elevationRect.width, y / (float) (h-1) * elevationRect.height);
         Vector3 vertex = new Vector3(latLong.x - elevationRect.width / 2.0F, ElevationStreamer.GetHeightAt(latLong + elevationRect.min), latLong.y - elevationRect.height / 2.0F);
         vertex.x *= 111319.444F;
         vertex.z *= 111319.444F;
@@ -65,7 +65,7 @@ public class ElevationChunk : MonoBehaviour
 
   private async void GenerateTexture()
   {
-    int textureSize = (int) Math.Pow(2, 9 - currentLOD);
+    int textureSize = Mathf.CeilToInt(ElevationStreamer.INSTANCE.chunkSize / 360.0F * 128.0F * Mathf.Pow(2.0F, SatelliteStreamer.INSTANCE.maxZoomLevel - currentLOD));
     Texture2D texture = new Texture2D(textureSize,textureSize);
     await SatelliteStreamer.ReadyResources(elevationRect, currentLOD);
     Color[] colors = new Color[textureSize * textureSize];

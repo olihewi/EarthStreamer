@@ -26,7 +26,7 @@ namespace Earthdata
         return (_i + _size) % _size;
       }
     }
-    private static SatelliteStreamer INSTANCE;
+    public static SatelliteStreamer INSTANCE;
     private static Dictionary<Vector3Int, TextureData> textures = new Dictionary<Vector3Int, TextureData>();
     private static Dictionary<Vector3Int, Task> currentlyDownloading = new Dictionary<Vector3Int, Task>();
     private string accessToken;

@@ -21,7 +21,7 @@ namespace Maps
     {
       id = long.Parse(_element.FirstAttribute.Value);
       // TODO: Take into account elevation data.
-      Vector2 latLong = new Vector2(float.Parse(_element.Attribute("lon").Value), float.Parse(_element.Attribute("lat").Value));
+      Vector2 latLong = new Vector2(float.Parse(_element.Attribute("lon").Value) + 0.0001F, float.Parse(_element.Attribute("lat").Value) + 0.0003F);
       chunkPos = new Vector3((latLong.x - _origin.x) * 111319.444F, ElevationStreamer.GetHeightAt(latLong), (latLong.y - _origin.y) * 111319.444F);
       tags = new Dictionary<string, string>();
       foreach (XElement tag in _element.Elements("tag"))

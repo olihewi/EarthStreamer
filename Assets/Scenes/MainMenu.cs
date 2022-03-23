@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
   public InputField mapboxToken;
   public InputField latitude;
   public InputField longitude;
+  public Slider textureQuality;
+  public Text textureQualityText;
   public Button playButton;
   public Image fader;
   private void Start()
@@ -23,11 +25,13 @@ public class MainMenu : MonoBehaviour
     mapboxToken.text = PlayerPrefs.GetString("mapbox_token", "");
     latitude.text = $"{PlayerPrefs.GetFloat("last_latitude", 51.5010681F)}";
     longitude.text = $"{PlayerPrefs.GetFloat("last_longitude", -2.54994893F)}";
+    textureQuality.value = PlayerPrefs.GetInt("texture_quality", 15) - 12;
     fader.enabled = false;
   }
 
   private void Update()
   {
+    textureQualityText.text = ((int)textureQuality.value).ToString();
     if (Input.GetKeyDown(KeyCode.Tab))
     {
       bool backwards = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
@@ -63,6 +67,7 @@ public class MainMenu : MonoBehaviour
     PlayerPrefs.SetString("mapbox_token", mapboxToken.text);
     PlayerPrefs.SetFloat("last_latitude", float.Parse(latitude.text));
     PlayerPrefs.SetFloat("last_longitude", float.Parse(longitude.text));
+    PlayerPrefs.SetInt("texture_quality", (int) textureQuality.value + 12);
     StartCoroutine(I_FadeOut(1.0F));
   }
 

@@ -17,6 +17,7 @@ public class EarthStreamer : MonoBehaviour
   public EarthdataStreamer earthdataStreamer;
   public ElevationStreamer elevationStreamer;
   public OSMStreamer osmStreamer;
+  public SatelliteStreamer satelliteStreamer;
   
   [Header("Chunks")]
   public float chunkSize = 0.025F;
@@ -31,5 +32,6 @@ public class EarthStreamer : MonoBehaviour
     startLatLong = new Vector2(PlayerPrefs.GetFloat("last_longitude", -2.54994893F),PlayerPrefs.GetFloat("last_latitude", 51.5010681F));
     elevationStreamer.startLatLong = startLatLong;
     osmStreamer.startLatLong = startLatLong;
+    satelliteStreamer.maxZoomLevel = PlayerPrefs.GetInt("texture_quality",15);
   }
 }

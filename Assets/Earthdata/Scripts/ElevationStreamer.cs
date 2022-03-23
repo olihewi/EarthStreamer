@@ -75,7 +75,7 @@ namespace Earthdata
       List<Vector2Int> toRemove = new List<Vector2Int>();
       foreach (KeyValuePair<Vector2Int, ElevationChunk> chunkPair in chunks)
       {
-        if ((chunkPair.Value.elevationRect.center - playerLatLong).sqrMagnitude > Mathf.Pow((maxLOD + 1) * LODStep,2)) toRemove.Add(chunkPair.Key);
+        if ((chunkPair.Value.elevationRect.center - playerLatLong).sqrMagnitude > Mathf.Pow((maxLOD + 1) * LODStep * chunkSize,2)) toRemove.Add(chunkPair.Key);
       }
       foreach (Vector2Int remove in toRemove)
       {
