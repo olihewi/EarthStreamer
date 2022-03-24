@@ -15,6 +15,7 @@ namespace Earthdata
       public Color[] colors;
       public Vector2Int size;
       public int refCount = 0;
+      public Vector3Int position;
 
       public Color GetPixel(Vector2 _uv)
       {
@@ -29,7 +30,7 @@ namespace Earthdata
     }
     public static SatelliteStreamer INSTANCE;
     private static Dictionary<Vector3Int, TextureData> textures = new Dictionary<Vector3Int, TextureData>();
-    private static Dictionary<Vector3Int, Task> currentlyDownloading = new Dictionary<Vector3Int, Task>();
+    private static Dictionary<Vector3Int, Task<TextureData>> currentlyDownloading = new Dictionary<Vector3Int, Task<TextureData>>();
     private string accessToken;
     public int maxZoomLevel = 15;
     public string tilesetName = "mapbox.satellite";
@@ -66,7 +67,7 @@ namespace Earthdata
       int zoom = INSTANCE.maxZoomLevel - _lod;
       Vector3Int ul = LatLongToTileID(_latLong.min, zoom);
       Vector3Int br = LatLongToTileID(_latLong.max, zoom);
-      List<Task> tasks = new List<Task>();
+      List<Task<TextureData>> tasks = new List<Task<TextureData>>();
       for (int x = ul.x; x <= br.x; x++)
       {
         for (int y = br.y; y <= ul.y; y++)
@@ -83,6 +84,13 @@ namespace Earthdata
         }
       }
       await Task.WhenAll(tasks);
+      foreach (Task<TextureData> task in tasks)
+      {
+        TextureData result = task.Result;
+        if (result == null) continue;
+        currentlyDownloading.Remove(result.position);
+        textures.Add(result.position, result);
+      }
       for (int x = ul.x; x <= br.x; x++)
       {
         for (int y = br.y; y <= ul.y; y++)
@@ -103,6 +111,7 @@ namespace Earthdata
         for (int y = br.y; y <= ul.y; y++)
         {
           Vector3Int xyz = new Vector3Int(x, y, zoom);
+          if (!textures.ContainsKey(xyz)) continue;
           if (--textures[xyz].refCount <= 0) textures.Remove(xyz);
         }
       }
@@ -118,7 +127,7 @@ namespace Earthdata
       return textures[tile].GetPixel(uv);
     }
     
-    private static async Task DownloadTexture(Vector3Int _texturePos)
+    private static async Task<TextureData> DownloadTexture(Vector3Int _texturePos)
     {
       string tile = $"{INSTANCE.tilesetName}.{_texturePos.z}.{_texturePos.x}.{_texturePos.y}.jpg";
       string filePath = $"{Application.streamingAssetsPath}/Satellite/{tile}";
@@ -133,12 +142,11 @@ namespace Earthdata
         UnityWebRequest www = UnityWebRequestTexture.GetTexture($"https://api.mapbox.com/v4/{INSTANCE.tilesetName}/{_texturePos.z}/{_texturePos.x}/{_texturePos.y}.jpg90?access_token={INSTANCE.accessToken}");
         www.SendWebRequest();
         while (!www.isDone) await Task.Delay(100);
-        if (www.result != UnityWebRequest.Result.Success) return;
+        if (www.result != UnityWebRequest.Result.Success) return null;
         texture = DownloadHandlerTexture.GetContent(www);
         File.WriteAllBytes(filePath,texture.EncodeToJPG(90));
       }
-      textures.Add(_texturePos, new TextureData{colors = texture.GetPixels(), size = new Vector2Int(texture.width,texture.height)});
-      currentlyDownloading.Remove(_texturePos);
+      return new TextureData { colors = texture.GetPixels(), size = new Vector2Int(texture.width, texture.height), position = _texturePos };
     }
   } 
 }
