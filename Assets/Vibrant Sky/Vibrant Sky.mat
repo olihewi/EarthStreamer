@@ -103,7 +103,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _CloudHeight: 0.825
+    - _CloudHeight: 0.067
     - _CloudOpacity: 0.5
     - _Cull: 2
     - _Cutoff: 0.5
@@ -141,7 +141,7 @@ Material:
     - Vector3_c99d0e29db7f41edb2cb1350c4d133e8: {r: 0, g: 0, b: 0, a: 0}
     - Vector3_d8319ccfe97f4bc38de37b68b8e873b5: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _CloudMovement: {r: 0.05, g: 0.01, b: 0, a: 0}
+    - _CloudMovement: {r: 0.2, g: 0.1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.41384837, g: 0.50070393, b: 0.5660378, a: 1}
