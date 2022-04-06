@@ -77,7 +77,7 @@ namespace Maps
         {
           GameObject go = Instantiate(prefab.Key, meshFilter.transform);
           go.transform.localPosition = prefab.Value;
-          go.transform.rotation = Quaternion.Euler(0.0F, Random.Range(0.0F,360.0F), 0.0F);
+          //go.transform.rotation = Quaternion.Euler(0.0F, Random.Range(0.0F,360.0F), 0.0F);
         }
       }
       // TODO: Make this async too
